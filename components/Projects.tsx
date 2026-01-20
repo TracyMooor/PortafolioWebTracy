@@ -10,27 +10,35 @@ const projects = [
     year: '2026',
     img: '/lacasa.jpg',
     link: 'https://lacasadeaurora.vercel.app/',
+    accentColor: '#A855F7', // Purple
+    glowColor: 'rgba(168, 85, 247, 0.6)',
   },
   {
     title: 'Nexus AI',
     category: 'Visit Web',
     year: '2024',
-    img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop',
+    img: '/lacasa.jpg',
     link: 'https://nexus-ai-platform.vercel.app/',
+    accentColor: '#10B981', // Green
+    glowColor: 'rgba(16, 185, 129, 0.6)',
   },
   {
     title: 'EcoFlow',
     category: 'Visit Web',
     year: '2024',
-    img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2000&auto=format&fit=crop',
+    img: '/lacasa.jpg',
     link: 'https://ecoflow-green.vercel.app/',
+    accentColor: '#3B82F6', // Blue
+    glowColor: 'rgba(59, 130, 246, 0.6)',
   },
   {
     title: 'Mono Collective',
     category: 'Visit Web',
     year: '2023',
-    img: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2000&auto=format&fit=crop',
+    img: '/lacasa.jpg',
     link: 'https://mono-collective.vercel.app/',
+    accentColor: '#F59E0B', // Orange
+    glowColor: 'rgba(245, 158, 11, 0.6)',
   },
   {
     title: 'La Casa de Aurora',
@@ -38,27 +46,35 @@ const projects = [
     year: '2026',
     img: '/lacasa.jpg',
     link: 'https://lacasadeaurora.vercel.app/',
+    accentColor: '#EF4444', // Red
+    glowColor: 'rgba(239, 68, 68, 0.6)',
   },
   {
     title: 'Nexus AI',
     category: 'Visit Web',
     year: '2024',
-    img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop',
+    img: '/lacasa.jpg',
     link: 'https://nexus-ai-platform.vercel.app/',
+    accentColor: '#06B6D4', // Cyan
+    glowColor: 'rgba(6, 182, 212, 0.6)',
   },
   {
     title: 'EcoFlow',
     category: 'Visit Web',
     year: '2024',
-    img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2000&auto=format&fit=crop',
+    img: '/lacasa.jpg',
     link: 'https://ecoflow-green.vercel.app/',
+    accentColor: '#8B5CF6', // Violet
+    glowColor: 'rgba(139, 92, 246, 0.6)',
   },
   {
     title: 'Mono Collective',
     category: 'Visit Web',
     year: '2023',
-    img: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2000&auto=format&fit=crop',
+    img: '/lacasa.jpg',
     link: 'https://mono-collective.vercel.app/',
+    accentColor: '#EC4899', // Pink
+    glowColor: 'rgba(236, 72, 153, 0.6)',
   }
 ];
 
@@ -154,32 +170,39 @@ const Projects: React.FC = () => {
                 <div className="absolute top-8 right-8 z-30 pointer-events-none animate-mouse-click-expert">
                   <div className="relative">
                     {/* Synchronized Expert Ripple */}
-                    <div className="absolute inset-0 w-24 h-24 -translate-x-1/2 -translate-y-1/2 border-2 border-white/20 rounded-full animate-ripple-expert pointer-events-none" />
+                    <div
+                      className="absolute inset-0 w-24 h-24 -translate-x-1/2 -translate-y-1/2 border-2 rounded-full animate-ripple-expert pointer-events-none"
+                      style={{ borderColor: project.glowColor }}
+                    />
 
                     {/* Expert Impact Flare */}
                     <div className="absolute inset-0 w-32 h-32 -translate-x-1/2 -translate-y-1/2 bg-white/20 blur-xl rounded-full scale-0 animate-impact-flare pointer-events-none" />
                     <div className="absolute inset-0 w-16 h-16 -translate-x-1/2 -translate-y-1/2 bg-white blur-md rounded-full scale-0 animate-impact-flare pointer-events-none" />
 
-                    {/* DESKTOP INDICATOR: Stealth Gray Arrow */}
+                    {/* DESKTOP INDICATOR: Dynamic Color Arrow */}
                     <div className="hidden md:block animate-neon-flicker">
-                      {/* Soft Mono Ambient Glow */}
-                      <div className="absolute inset-0 bg-white/5 blur-xl rounded-full scale-125" />
+                      {/* Soft Ambient Glow base */}
+                      <div
+                        className="absolute inset-0 blur-xl rounded-full scale-125 opacity-20"
+                        style={{ backgroundColor: project.accentColor }}
+                      />
                       <svg
                         width="38"
                         height="38"
                         viewBox="0 0 24 24"
-                        className="drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] transform rotate-[-95deg]"
+                        className="transform rotate-[-95deg]"
+                        style={{ filter: `drop-shadow(0 0 8px ${project.glowColor})` }}
                       >
                         {/* Outer Body Glow Path */}
                         <path
                           d="M5.5 3.21V20.8L10.07 16.23L13.12 22.5L16.22 21L13.17 14.73L18.79 14.73L5.5 3.21Z"
-                          fill="#18181b"
-                          opacity="0.8"
+                          fill={project.accentColor}
+                          opacity="0.3"
                         />
                         {/* Main Body Path */}
                         <path
                           d="M5.5 3.21V20.8L10.07 16.23L13.12 22.5L16.22 21L13.17 14.73L18.79 14.73L5.5 3.21Z"
-                          fill="#27272a"
+                          fill="#121212"
                           stroke="white"
                           strokeWidth="1.2"
                           strokeLinejoin="round"
@@ -193,26 +216,30 @@ const Projects: React.FC = () => {
                       </svg>
                     </div>
 
-                    {/* MOBILE INDICATOR: Stealth Gray Arrow (Unified with Desktop) */}
+                    {/* MOBILE INDICATOR: Dynamic Color Arrow (Unified) */}
                     <div className="block md:hidden animate-neon-flicker">
-                      {/* Soft Mono Ambient Glow */}
-                      <div className="absolute inset-0 bg-white/5 blur-xl rounded-full scale-125" />
+                      {/* Soft Ambient Glow base */}
+                      <div
+                        className="absolute inset-0 blur-xl rounded-full scale-125 opacity-20"
+                        style={{ backgroundColor: project.accentColor }}
+                      />
                       <svg
                         width="38"
                         height="38"
                         viewBox="0 0 24 24"
-                        className="drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] transform rotate-[-135deg]"
+                        className="transform rotate-[-135deg]"
+                        style={{ filter: `drop-shadow(0 0 8px ${project.glowColor})` }}
                       >
                         {/* Outer Body Glow Path */}
                         <path
                           d="M5.5 3.21V20.8L10.07 16.23L13.12 22.5L16.22 21L13.17 14.73L18.79 14.73L5.5 3.21Z"
-                          fill="#18181b"
-                          opacity="0.8"
+                          fill={project.accentColor}
+                          opacity="0.3"
                         />
                         {/* Main Body Path */}
                         <path
                           d="M5.5 3.21V20.8L10.07 16.23L13.12 22.5L16.22 21L13.17 14.73L18.79 14.73L5.5 3.21Z"
-                          fill="#27272a"
+                          fill="#121212"
                           stroke="white"
                           strokeWidth="1.2"
                           strokeLinejoin="round"
@@ -234,8 +261,8 @@ const Projects: React.FC = () => {
                   className="w-full h-full object-cover transition-transform duration-[2.5s] cubic-bezier(0.19, 1, 0.22, 1) group-hover/img:scale-105 animate-image-impact"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-50 group-hover/img:opacity-30 transition-opacity duration-700" />
-                <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-20 overflow-hidden">
-                  <h3 className="project-title text-2xl sm:text-3xl md:text-3xl lg:text-4xl heading font-bold text-white uppercase tracking-tighter leading-[0.9] will-change-transform">
+                <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 z-20">
+                  <h3 className="project-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl heading font-bold text-white uppercase tracking-tight leading-[1] will-change-transform animate-text-reveal transition-all duration-700 drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">
                     {project.title}
                   </h3>
                 </div>
@@ -248,8 +275,8 @@ const Projects: React.FC = () => {
                   className="w-full h-full object-cover transition-transform duration-[2.5s] cubic-bezier(0.19, 1, 0.22, 1)"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-50" />
-                <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-20 overflow-hidden">
-                  <h3 className="project-title text-2xl sm:text-3xl md:text-3xl lg:text-4xl heading font-bold text-white uppercase tracking-tighter leading-[0.9] will-change-transform">
+                <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 z-20">
+                  <h3 className="project-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl heading font-bold text-white uppercase tracking-tight leading-[1] will-change-transform animate-text-reveal transition-all duration-700 drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">
                     {project.title}
                   </h3>
                 </div>

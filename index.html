@@ -256,6 +256,24 @@
       animation: impact-flare 4s ease-out infinite;
     }
 
+    @keyframes text-shimmer-drift {
+
+      0%,
+      100% {
+        transform: translateX(0);
+        filter: brightness(1);
+      }
+
+      50% {
+        transform: translateX(8px);
+        filter: brightness(1.4);
+      }
+    }
+
+    .animate-text-reveal {
+      animation: text-shimmer-drift 5s ease-in-out infinite;
+    }
+
     .noise-bg-texture {
       background-image: url('https://grainy-gradients.vercel.app/noise.svg');
     }
