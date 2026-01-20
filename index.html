@@ -103,6 +103,22 @@
       animation: pulse-custom 2s infinite;
     }
 
+    @keyframes bounce-gentle {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1.02);
+      }
+
+      50% {
+        transform: translateY(-4px) scale(1);
+      }
+    }
+
+    .animate-bounce-gentle {
+      animation: bounce-gentle 1.5s ease-in-out infinite;
+    }
+
     .noise-bg-texture {
       background-image: url('https://grainy-gradients.vercel.app/noise.svg');
     }

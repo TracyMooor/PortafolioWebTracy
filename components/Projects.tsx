@@ -6,28 +6,59 @@ import { useLang } from './LanguageContext';
 const projects = [
   {
     title: 'La Casa de Aurora',
-    category: 'SaaS Platform',
+    category: 'Visit Web',
     year: '2026',
     img: '/lacasa.jpg',
     link: 'https://lacasadeaurora.vercel.app/',
   },
   {
     title: 'Nexus AI',
-    category: 'Full Stack Dashboard',
+    category: 'Visit Web',
     year: '2024',
     img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop',
+    link: 'https://nexus-ai-platform.vercel.app/',
   },
   {
     title: 'EcoFlow',
-    category: 'Sustainable Tech',
+    category: 'Visit Web',
     year: '2024',
     img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2000&auto=format&fit=crop',
+    link: 'https://ecoflow-green.vercel.app/',
   },
   {
     title: 'Mono Collective',
-    category: 'Design Agency',
+    category: 'Visit Web',
     year: '2023',
     img: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2000&auto=format&fit=crop',
+    link: 'https://mono-collective.vercel.app/',
+  },
+  {
+    title: 'La Casa de Aurora',
+    category: 'Visit Web',
+    year: '2026',
+    img: '/lacasa.jpg',
+    link: 'https://lacasadeaurora.vercel.app/',
+  },
+  {
+    title: 'Nexus AI',
+    category: 'Visit Web',
+    year: '2024',
+    img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop',
+    link: 'https://nexus-ai-platform.vercel.app/',
+  },
+  {
+    title: 'EcoFlow',
+    category: 'Visit Web',
+    year: '2024',
+    img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2000&auto=format&fit=crop',
+    link: 'https://ecoflow-green.vercel.app/',
+  },
+  {
+    title: 'Mono Collective',
+    category: 'Visit Web',
+    year: '2023',
+    img: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2000&auto=format&fit=crop',
+    link: 'https://mono-collective.vercel.app/',
   }
 ];
 
@@ -109,45 +140,96 @@ const Projects: React.FC = () => {
         </div>
       </div>
 
-      {/* Adjusted height on mobile to keep items compact */}
-      <div ref={horizontalRef} className="flex h-[60vh] md:h-[75vh] items-center px-6 md:px-24 gap-12 md:gap-48 relative">
+      {/* Optimized spacing for desktop to ensure vertical visibility */}
+      <div ref={horizontalRef} className="flex h-[60vh] md:h-fit items-start px-6 md:px-24 pt-10 md:-mt-24 gap-12 md:gap-32 lg:gap-40 relative">
         {projects.map((project, index) => (
-          <div key={index} className="project-item flex-shrink-0 w-[80vw] md:w-[65vw] lg:w-[60vw] group flex flex-col">
-            <div className="relative overflow-hidden aspect-video bg-zinc-900 shadow-2xl rounded-sm">
-              <img
-                src={project.img}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-[2.5s] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity duration-700" />
-              <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 z-20 overflow-hidden">
-                <h3 className="project-title text-4xl sm:text-5xl md:text-8xl lg:text-[7vw] heading font-bold text-white uppercase tracking-tighter leading-[0.85] will-change-transform">
-                  {project.title}
-                </h3>
+          <div key={index} className="project-item flex-shrink-0 w-[85vw] md:w-[45vw] lg:w-[30vw] group flex flex-col pt-0">
+            {project.link ? (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative overflow-hidden aspect-video bg-zinc-900 shadow-2xl rounded-sm block cursor-pointer group/img"
+              >
+                <img
+                  src={project.img}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-[2.5s] cubic-bezier(0.19, 1, 0.22, 1) group-hover/img:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-50 group-hover/img:opacity-30 transition-opacity duration-700" />
+                <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-20 overflow-hidden">
+                  <h3 className="project-title text-2xl sm:text-3xl md:text-3xl lg:text-4xl heading font-bold text-white uppercase tracking-tighter leading-[0.9] will-change-transform">
+                    {project.title}
+                  </h3>
+                </div>
+              </a>
+            ) : (
+              <div className="relative overflow-hidden aspect-video bg-zinc-900 shadow-2xl rounded-sm">
+                <img
+                  src={project.img}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-[2.5s] cubic-bezier(0.19, 1, 0.22, 1)"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-50" />
+                <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-20 overflow-hidden">
+                  <h3 className="project-title text-2xl sm:text-3xl md:text-3xl lg:text-4xl heading font-bold text-white uppercase tracking-tighter leading-[0.9] will-change-transform">
+                    {project.title}
+                  </h3>
+                </div>
               </div>
-            </div>
+            )}
 
-            <div className="mt-10 md:mt-14 flex justify-between items-start px-2 border-t border-white/10 pt-10 group-hover:border-white/20 transition-colors duration-700">
-              <div className="flex flex-col gap-3 md:gap-5">
+            <div className="mt-6 md:mt-8 flex justify-between items-start px-1 border-t border-white/10 pt-6 group-hover:border-white/20 transition-colors duration-700">
+              <div className="flex flex-col gap-2 md:gap-3">
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-white/30 rounded-full"></span>
                   <span className="mono text-[10px] md:text-xs uppercase text-white/40 tracking-[0.5em] font-medium">
                     {t('category_label')}
                   </span>
                 </div>
-                <h4 className="heading text-2xl md:text-5xl lg:text-6xl uppercase tracking-tighter font-bold text-white leading-[0.9]">
-                  {project.category}
+                <h4 className="heading text-xl md:text-2xl lg:text-3xl tracking-tighter font-bold text-white leading-[0.9]">
+                  {project.link ? (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/link inline-flex items-center gap-3 md:gap-4 animate-bounce-gentle"
+                    >
+                      <div className="flex items-center justify-center w-6 h-6 md:w-10 md:h-10 rounded-full border border-white/20 group-hover/link:border-white group-hover/link:bg-white transition-all duration-500">
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="w-3.5 h-3.5 md:w-5 md:h-5 text-white/40 group-hover/link:text-black transition-all duration-500 rotate-[-45deg] group-hover/link:rotate-0"
+                        >
+                          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                        </svg>
+                      </div>
+                      <span className="relative pb-1">
+                        {project.category === 'Visit Web' ? t('visitWeb') : project.category}
+                        <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-white scale-x-0 group-hover/link:scale-x-100 transition-transform duration-500 origin-left" />
+                      </span>
+                    </a>
+                  ) : (
+                    <span className="uppercase">
+                      {project.category === 'Visit Web' ? t('visitWeb') : project.category}
+                    </span>
+                  )}
                 </h4>
               </div>
 
-              <div className="flex flex-col gap-3 md:gap-5 items-end text-right">
+              <div className="flex flex-col gap-2 md:gap-3 items-end text-right">
                 <div className="flex items-center gap-3 justify-end">
                   <span className="mono text-[10px] md:text-xs uppercase text-white/40 tracking-[0.5em] font-medium">
                     {t('year_label')}
                   </span>
                   <span className="w-2 h-2 bg-white/30 rounded-full"></span>
                 </div>
-                <h4 className="heading text-2xl md:text-5xl lg:text-6xl uppercase tracking-tighter font-bold text-white leading-[0.9]">
+                <h4 className="heading text-xl md:text-2xl lg:text-3xl uppercase tracking-tighter font-bold text-white leading-[0.9]">
                   {project.year}
                 </h4>
               </div>

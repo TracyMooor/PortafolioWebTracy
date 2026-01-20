@@ -18,12 +18,12 @@ const translations = {
     contact: "Contact",
     scrollDown: "Scroll Down",
     location: "Lima, Perú",
-    
+
     // Hero
     basedIn: "Based in",
     specializing: "Specializing in",
     specialty: "Advanced Web Interfaces",
-    
+
     // About
     philosophy: "Philosophy",
     about_intro: "Architecture is defined by precision in every interaction. As a full-stack developer, I transform complex logic into robust web applications that perform at a high level in production environments.",
@@ -35,13 +35,14 @@ const translations = {
     role_label: "ROLE",
     fullstack_lead: "FULL-STACK LEAD",
     engineering_bg: "ENGINEERING",
-    
+
     // Projects
     selectedWorks: "Selected Works",
     project_desc: "TRANSFORMING COMPLEX LOGIC INTO HIGH-FIDELITY DIGITAL EXPERIENCES.",
     category_label: "WEBSITE",
     year_label: "YEAR",
-    
+    visitWeb: "Visit Web",
+
     // Footer / Contact
     collaboration: "Collaboration",
     contact_h1: "Have an idea?",
@@ -60,12 +61,12 @@ const translations = {
     contact: "Contacto",
     scrollDown: "Deslizar",
     location: "Lima, Perú",
-    
+
     // Hero
     basedIn: "Ubicada en",
     specializing: "Especializada en",
     specialty: "Interfaces Web Avanzadas",
-    
+
     // About
     philosophy: "Filosofía",
     about_intro: "La arquitectura se define por la precisión en cada interacción. Como Desarrolladora Full Stack, transformo lógica compleja en aplicaciones web robustas que funcionan con alto rendimiento en entornos de producción.",
@@ -77,13 +78,14 @@ const translations = {
     role_label: "ROL",
     fullstack_lead: "LÍDER FULL-STACK",
     engineering_bg: "INGENIERA",
-    
+
     // Projects
     selectedWorks: "Proyectos Selectos",
     project_desc: "TRANSFORMANDO LÓGICA COMPLEJA EN EXPERIENCIAS DIGITALES DE ALTA FIDELIDAD.",
     category_label: "SITIO WEB",
     year_label: "AÑO",
-    
+    visitWeb: "Visitar Web",
+
     // Footer / Contact
     collaboration: "Colaboración",
     contact_h1: "¿Tienes una idea?",
