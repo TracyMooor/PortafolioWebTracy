@@ -5,10 +5,11 @@ import { useLang } from './LanguageContext';
 
 const projects = [
   {
-    title: 'Vortex UI',
+    title: 'La Casa de Aurora',
     category: 'SaaS Platform',
-    year: '2023',
-    img: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=2000&auto=format&fit=crop',
+    year: '2026',
+    img: '/lacasa.jpg',
+    link: 'https://lacasadeaurora.vercel.app/',
   },
   {
     title: 'Nexus AI',

@@ -110,7 +110,7 @@ const About: React.FC = () => {
           <div className="lg:col-span-5 relative w-full mt-10 lg:mt-0">
             <div ref={imageWrapperRef} className="relative aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-zinc-900 group rounded-sm shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2574&auto=format&fit=crop" 
+                src="/portafoliotracy.jpg" 
                 alt="Tracy Moriano" 
                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
               />
