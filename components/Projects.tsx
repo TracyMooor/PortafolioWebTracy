@@ -297,9 +297,9 @@ const Projects: React.FC = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link inline-flex items-center gap-3 md:gap-4 animate-bounce-gentle"
+                      className="group/link inline-flex items-center gap-3 md:gap-4"
                     >
-                      <div className="flex items-center justify-center w-6 h-6 md:w-10 md:h-10 rounded-full border border-white/20 group-hover/link:border-white group-hover/link:bg-white transition-all duration-500">
+                      <div className="flex items-center justify-center w-6 h-6 md:w-10 md:h-10 rounded-full border border-white/20 group-hover/link:border-white group-hover/link:bg-white transition-all duration-500 animate-bounce-gentle">
                         <svg
                           viewBox="0 0 24 24"
                           fill="none"

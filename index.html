@@ -274,6 +274,39 @@
       animation: text-shimmer-drift 5s ease-in-out infinite;
     }
 
+    @keyframes bounce-gentle {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    @keyframes letter-bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+
+    .animate-bounce-gentle {
+      animation: bounce-gentle 2.5s ease-in-out infinite;
+    }
+
+    .animate-letter-bounce {
+      display: inline-block;
+      animation: letter-bounce 2s ease-in-out infinite;
+    }
+
     .noise-bg-texture {
       background-image: url('https://grainy-gradients.vercel.app/noise.svg');
     }
