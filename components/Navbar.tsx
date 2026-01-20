@@ -207,8 +207,8 @@ const Navbar: React.FC = () => {
         <div className="mobile-footer mt-auto pt-10 border-t border-white/10 relative z-10 flex flex-col gap-10">
           <div className="flex justify-between items-start w-full">
             <div className="flex flex-col gap-3">
-              <span className="mono text-[9px] uppercase text-white/30 tracking-[0.3em]">{t('location_label')}</span>
-              <span className="heading text-xs uppercase font-bold text-white tracking-widest">{t('location')}</span>
+              <span className="mono text-[9px] uppercase text-white/30 tracking-[0.3em]">{t('basedIn')}</span>
+              <span className="heading text-xs uppercase font-bold text-white tracking-widest">{t('heroLocation')}</span>
             </div>
             <div className="flex flex-col gap-3 items-end">
               <span className="mono text-[9px] uppercase text-white/30 tracking-[0.3em]">{lang === 'ESP' ? 'CONTACTO' : 'CONTACT'}</span>

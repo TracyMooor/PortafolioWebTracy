@@ -17,7 +17,8 @@ const translations = {
     about: "About",
     contact: "Contact",
     scrollDown: "Scroll Down",
-    location: "Tracy Moriano",
+    location: "TRACY MORIANO",
+    heroLocation: "LIMA, PERÚ",
 
     // Hero
     basedIn: "Based in",
@@ -60,7 +61,8 @@ const translations = {
     about: "Sobre mí",
     contact: "Contacto",
     scrollDown: "Deslizar",
-    location: "Tracy Moriano",
+    location: "TRACY MORIANO",
+    heroLocation: "LIMA, PERÚ",
 
     // Hero
     basedIn: "Ubicada en",

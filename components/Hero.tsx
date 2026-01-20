@@ -21,18 +21,18 @@ const Hero: React.FC<HeroProps> = ({ active }) => {
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
 
     tl.set(containerRef.current, { opacity: 1 })
-      .fromTo(spineRef.current, 
-        { scaleY: 0 }, 
+      .fromTo(spineRef.current,
+        { scaleY: 0 },
         { scaleY: 1, duration: 2, transformOrigin: 'top', ease: 'power4.inOut' }
       )
-      .fromTo(chars, 
-        { y: 150, opacity: 0, rotateX: -90 }, 
+      .fromTo(chars,
+        { y: 150, opacity: 0, rotateX: -90 },
         { y: 0, opacity: 1, rotateX: 0, stagger: 0.02, duration: 1.8 },
         "-=1.5"
       )
-      .fromTo(metaRefs.current, 
-        { y: 30, opacity: 0 }, 
-        { y: 0, opacity: 1, stagger: 0.1, duration: 1.2 }, 
+      .fromTo(metaRefs.current,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.1, duration: 1.2 },
         "-=1"
       );
 
@@ -63,8 +63,8 @@ const Hero: React.FC<HeroProps> = ({ active }) => {
   };
 
   return (
-    <section 
-      ref={containerRef} 
+    <section
+      ref={containerRef}
       className={`relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#050505] select-none transition-opacity duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
     >
       <div ref={spineRef} className="absolute left-1/2 top-0 w-[1px] h-full bg-gradient-to-b from-white/20 via-white/5 to-transparent z-0 hidden md:block" />
@@ -76,7 +76,7 @@ const Hero: React.FC<HeroProps> = ({ active }) => {
       </div>
 
       <div className="relative z-10 text-center px-4 w-full">
-        <h1 
+        <h1
           ref={titleRef}
           className="text-[clamp(3.5rem,15vw,14rem)] font-bold leading-[0.8] uppercase tracking-tighter text-white perspective-1000"
         >
@@ -88,7 +88,7 @@ const Hero: React.FC<HeroProps> = ({ active }) => {
       <div className="absolute bottom-[8%] md:bottom-[10%] w-full max-w-[1400px] px-8 md:px-24 grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-8 md:gap-0 z-10">
         <div ref={el => { metaRefs.current[0] = el; }} className="flex flex-col items-center md:items-start group order-2 md:order-1">
           <span className="mono text-[8px] md:text-[9px] opacity-30 uppercase tracking-widest mb-1 group-hover:opacity-100 transition-opacity">{t('basedIn')}</span>
-          <span className="heading text-[10px] md:text-xs uppercase tracking-[0.2em] font-medium">{t('location')}</span>
+          <span className="heading text-[10px] md:text-xs uppercase tracking-[0.2em] font-medium">{t('heroLocation')}</span>
         </div>
 
         <div ref={el => { metaRefs.current[1] = el; }} className="flex flex-col items-center gap-3 md:gap-4 order-1 md:order-2">
