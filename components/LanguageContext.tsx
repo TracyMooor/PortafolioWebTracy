@@ -12,7 +12,7 @@ interface LanguageContextType {
 const translations = {
   ENG: {
     // Navbar & Common
-    role: "Software Engineer | Creative Coder",
+    role: "Software Engineer | Full Stack Developer",
     projects: "Projects",
     about: "About",
     contact: "Contact",
@@ -22,11 +22,11 @@ const translations = {
     // Hero
     basedIn: "Based in",
     specializing: "Specializing in",
-    specialty: "Scalable Architecture",
+    specialty: "Advanced Web Interfaces",
     
     // About
     philosophy: "Philosophy",
-    about_intro: "Architecture is not just about structure, it is about the poetry of precision. As a Software Engineer in Lima, Perú, I transform complex logic into fluid, high-end digital experiences that prioritize performance and aesthetic brutalism.",
+    about_intro: "Architecture is defined by precision in every interaction. As a full-stack developer, I transform complex logic into robust web applications designed to scale and operate at high performance in production environments.",
     mindset_label: "THE MINDSET",
     mindset_text: "Focusing on scalable architectures and pixel-perfect interfaces. I bridge the gap between design vision and technical reality.",
     goal_label: "THE GOAL",
@@ -36,26 +36,10 @@ const translations = {
     fullstack_lead: "FULL-STACK LEAD",
     engineering_bg: "ENGINEERING",
     
-    // Tech Stack
-    tech_stack: "Tech Stack",
-    tech_stack_desc: "Merging structural engineering with high-fidelity visual performance.",
-    cat_frontend: "Frontend Core",
-    cat_logic: "Logic & State",
-    cat_motion: "Motion Engine",
-    cat_backend: "Server Side",
-    cat_graphics: "Graphics",
-    cat_3d: "3D Library",
-    cat_styling: "Styling",
-    cat_db: "Database",
-    cat_framework: "Architecture",
-    cat_interaction: "Interactive Motion",
-    cat_shaders: "Low Level",
-    cat_cloud: "Infrastructure",
-    
     // Projects
     selectedWorks: "Selected Works",
     project_desc: "TRANSFORMING COMPLEX LOGIC INTO HIGH-FIDELITY DIGITAL EXPERIENCES.",
-    category_label: "CATEGORY",
+    category_label: "WEBSITE",
     year_label: "YEAR",
     
     // Footer / Contact
@@ -71,7 +55,7 @@ const translations = {
   },
   ESP: {
     // Navbar & Common
-    role: "Ingeniera de Software | Creative Coder",
+    role: "Ingeniera de Software | Desarrolladora Full Stack",
     projects: "Proyectos",
     about: "Sobre mí",
     contact: "Contacto",
@@ -81,11 +65,11 @@ const translations = {
     // Hero
     basedIn: "Ubicada en",
     specializing: "Especializada en",
-    specialty: "Arquitectura Escalable",
+    specialty: "Interfaces Web Avanzadas",
     
     // About
     philosophy: "Filosofía",
-    about_intro: "La arquitectura no se trata solo de estructura, se trata de la poesía de la precisión. Como Ingeniera de Software en Lima, Perú, transformo lógica compleja en experiencias digitales fluidas y de alto nivel que priorizan el rendimiento y el brutalismo estético.",
+    about_intro: "La arquitectura se define por la precisión en cada interacción. Como Desarrolladora Full Stack, transformo lógica compleja en aplicaciones web robustas, diseñadas para escalar y operar con alto rendimiento en entornos de producción.",
     mindset_label: "LA MENTALIDAD",
     mindset_text: "Enfocada en arquitecturas escalables e interfaces perfectas. Cierro la brecha entre la visión de diseño y la realidad técnica.",
     goal_label: "EL OBJETIVO",
@@ -95,33 +79,17 @@ const translations = {
     fullstack_lead: "LÍDER FULL-STACK",
     engineering_bg: "INGENIERÍA",
     
-    // Tech Stack
-    tech_stack: "Tecnologías",
-    tech_stack_desc: "Fusionando ingeniería estructural con rendimiento visual de alta fidelidad.",
-    cat_frontend: "Núcleo Frontend",
-    cat_logic: "Lógica y Estado",
-    cat_motion: "Motor de Movimiento",
-    cat_backend: "Lado del Servidor",
-    cat_graphics: "Gráficos",
-    cat_3d: "Librería 3D",
-    cat_styling: "Estilos",
-    cat_db: "Base de Datos",
-    cat_framework: "Arquitectura",
-    cat_interaction: "Movimiento Interactivo",
-    cat_shaders: "Bajo Nivel",
-    cat_cloud: "Infraestructura",
-    
     // Projects
     selectedWorks: "Proyectos Selectos",
     project_desc: "TRANSFORMANDO LÓGICA COMPLEJA EN EXPERIENCIAS DIGITALES DE ALTA FIDELIDAD.",
-    category_label: "CATEGORÍA",
+    category_label: "SITIO WEB",
     year_label: "AÑO",
     
     // Footer / Contact
     collaboration: "Colaboración",
     contact_h1: "¿Tienes una idea?",
-    contact_h2: "Construyamos el",
-    contact_h3: "futuro juntos.",
+    contact_h2: "Hagámoslo",
+    contact_h3: "realidad.",
     email: "Correo",
     linkedin: "LinkedIn",
     github: "GitHub",

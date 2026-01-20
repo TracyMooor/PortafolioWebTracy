@@ -71,7 +71,7 @@ const About: React.FC = () => {
     ScrollTrigger.refresh();
   }, [lang]);
 
-  const technologies = ["React", "TypeScript", "GSAP", "Next.js", "Node.js", "PostgreSQL", "UI/UX", "GLSL", "AWS", "Three.js", "Python"];
+  const technologies = ["React", "TypeScript", "GSAP", "PostgreSQL", "UI/UX", "GLSL", "AWS", "JavaScript", "PHP", "Python", "Docker", "SQL"];
 
   return (
     <section id="about" ref={containerRef} className="relative py-24 md:py-40 bg-[#050505] overflow-hidden">

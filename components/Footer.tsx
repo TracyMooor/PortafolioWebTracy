@@ -117,7 +117,7 @@ const Footer: React.FC = () => {
       <div className="w-full mb-16 md:mb-24">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 md:gap-12 border-b border-black/10 pb-8 md:pb-12">
           <span className="mono text-[10px] uppercase text-black/40 tracking-[0.4em]">
-            04 — {t('contact')}
+            03 — {t('contact')}
           </span>
           <div className="max-w-md">
             <p className="text-black/30 text-[10px] md:text-xs mono leading-relaxed uppercase tracking-widest text-left md:text-right">
@@ -138,7 +138,7 @@ const Footer: React.FC = () => {
 
         <div className="w-full lg:w-[450px] flex flex-col">
           <MagneticLink href="mailto:tracynicolehmorianotuanama@gmail.com" label={t('email')}>
-            {lang === 'ESP' ? 'Contacto' : 'Tracy@gmail.com'}
+            {lang === 'ESP' ? 'Tracy@gmail.com' : 'Tracy@gmail.com'}
           </MagneticLink>
           <MagneticLink href="https://www.linkedin.com/in/tracymooor/" label={t('linkedin')}>
             Tracy Moriano

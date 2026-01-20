@@ -45,53 +45,53 @@ const Projects: React.FC = () => {
       // We only apply pinning and horizontal scroll if screen is reasonably wide
       // or if we want to keep it consistent, we ensure it's tight.
       const totalWidth = section.scrollWidth - window.innerWidth;
-      
+
       gsap.to(section, {
-        x: -totalWidth, 
+        x: -totalWidth,
         ease: 'none',
-        scrollTrigger: { 
-          trigger: triggerRef.current, 
-          pin: true, 
-          scrub: 1, 
-          start: 'top top', 
-          end: () => `+=${totalWidth}`, 
-          invalidateOnRefresh: true 
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          pin: true,
+          scrub: 1,
+          start: 'top top',
+          end: () => `+=${totalWidth}`,
+          invalidateOnRefresh: true
         }
       });
 
       // Header Fade In
-      gsap.from(headerRef.current, { 
-        opacity: 0, 
-        y: 20, 
-        duration: 1, 
-        ease: 'expo.out', 
-        scrollTrigger: { 
-          trigger: headerRef.current, 
-          start: 'top 90%' 
-        } 
+      gsap.from(headerRef.current, {
+        opacity: 0,
+        y: 20,
+        duration: 1,
+        ease: 'expo.out',
+        scrollTrigger: {
+          trigger: headerRef.current,
+          start: 'top 90%'
+        }
       });
 
       // Individual project title animations
       section.querySelectorAll('.project-item').forEach((item) => {
         const title = item.querySelector('.project-title');
         if (title) {
-          gsap.from(title, { 
-            y: '50%', 
-            opacity: 0, 
-            duration: 1.2, 
-            ease: 'expo.out', 
-            scrollTrigger: { 
-              trigger: item, 
-              containerAnimation: gsap.to(section, { x: -totalWidth, ease: 'none' }), 
-              start: 'left 85%' 
-            } 
+          gsap.from(title, {
+            y: '50%',
+            opacity: 0,
+            duration: 1.2,
+            ease: 'expo.out',
+            scrollTrigger: {
+              trigger: item,
+              containerAnimation: gsap.to(section, { x: -totalWidth, ease: 'none' }),
+              start: 'left 85%'
+            }
           });
         }
       });
     });
 
     return () => ctx.revert();
-  }, []); 
+  }, []);
 
   return (
     <section id="projects" ref={triggerRef} className="relative bg-[#050505] overflow-hidden min-h-screen flex flex-col justify-start">
@@ -99,7 +99,7 @@ const Projects: React.FC = () => {
       <div ref={headerRef} className="w-full px-6 md:px-24 pt-20 md:pt-32 pb-8 md:pb-16 z-20">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-12 border-b border-white/5 pb-8 md:pb-16">
           <div className="flex flex-col gap-2 md:gap-4">
-            <span className="mono text-[9px] md:text-[10px] uppercase text-white/40 tracking-[0.4em]">03 — {t('selectedWorks')}</span>
+            <span className="mono text-[9px] md:text-[10px] uppercase text-white/40 tracking-[0.4em]">02 — {t('selectedWorks')}</span>
           </div>
           <div className="max-w-md">
             <p className="text-white/30 text-[9px] md:text-xs mono leading-relaxed uppercase tracking-widest text-left md:text-right">
@@ -114,35 +114,42 @@ const Projects: React.FC = () => {
         {projects.map((project, index) => (
           <div key={index} className="project-item flex-shrink-0 w-[80vw] md:w-[65vw] lg:w-[60vw] group flex flex-col">
             <div className="relative overflow-hidden aspect-video bg-zinc-900 shadow-2xl rounded-sm">
-              <img 
-                src={project.img} 
-                alt={project.title} 
-                className="w-full h-full object-cover transition-transform duration-[2.5s] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-105" 
+              <img
+                src={project.img}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-[2.5s] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity duration-700" />
               <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 z-20 overflow-hidden">
-                 <h3 className="project-title text-4xl sm:text-5xl md:text-8xl lg:text-[7vw] heading font-bold text-white uppercase tracking-tighter leading-[0.85] will-change-transform">
-                   {project.title}
-                 </h3>
+                <h3 className="project-title text-4xl sm:text-5xl md:text-8xl lg:text-[7vw] heading font-bold text-white uppercase tracking-tighter leading-[0.85] will-change-transform">
+                  {project.title}
+                </h3>
               </div>
             </div>
-            
-            <div className="mt-6 md:mt-10 flex justify-between items-start px-1 text-white/90">
-              <div className="flex flex-col gap-2 md:gap-4">
-                <span className="mono text-[8px] md:text-[10px] uppercase opacity-30 tracking-[0.3em]">
-                  0{index + 1} / {t('category_label')}
-                </span>
-                <span className="heading text-lg md:text-3xl uppercase tracking-tighter font-medium">
+
+            <div className="mt-10 md:mt-14 flex justify-between items-start px-2 border-t border-white/10 pt-10 group-hover:border-white/20 transition-colors duration-700">
+              <div className="flex flex-col gap-3 md:gap-5">
+                <div className="flex items-center gap-3">
+                  <span className="w-2 h-2 bg-white/30 rounded-full"></span>
+                  <span className="mono text-[10px] md:text-xs uppercase text-white/40 tracking-[0.5em] font-medium">
+                    {t('category_label')}
+                  </span>
+                </div>
+                <h4 className="heading text-2xl md:text-5xl lg:text-6xl uppercase tracking-tighter font-bold text-white leading-[0.9]">
                   {project.category}
-                </span>
+                </h4>
               </div>
-              <div className="flex flex-col gap-2 md:gap-4 items-end">
-                <span className="mono text-[8px] md:text-[10px] uppercase opacity-30 tracking-[0.3em]">
-                  {t('year_label')}
-                </span>
-                <span className="heading text-lg md:text-3xl uppercase tracking-tighter font-medium">
+
+              <div className="flex flex-col gap-3 md:gap-5 items-end text-right">
+                <div className="flex items-center gap-3 justify-end">
+                  <span className="mono text-[10px] md:text-xs uppercase text-white/40 tracking-[0.5em] font-medium">
+                    {t('year_label')}
+                  </span>
+                  <span className="w-2 h-2 bg-white/30 rounded-full"></span>
+                </div>
+                <h4 className="heading text-2xl md:text-5xl lg:text-6xl uppercase tracking-tighter font-bold text-white leading-[0.9]">
                   {project.year}
-                </span>
+                </h4>
               </div>
             </div>
           </div>
