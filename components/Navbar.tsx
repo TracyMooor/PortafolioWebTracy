@@ -211,7 +211,7 @@ const Navbar: React.FC = () => {
               <span className="heading text-xs uppercase font-bold text-white tracking-widest">{t('location')}</span>
             </div>
             <div className="flex flex-col gap-3 items-end">
-              <span className="mono text-[9px] uppercase text-white/30 tracking-[0.3em]">CONTACT</span>
+              <span className="mono text-[9px] uppercase text-white/30 tracking-[0.3em]">{lang === 'ESP' ? 'CONTACTO' : 'CONTACT'}</span>
               <div className="flex gap-4">
                 <SocialIconMenu
                   href="https://wa.me/51906936891"

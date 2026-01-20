@@ -87,7 +87,7 @@ const About: React.FC = () => {
               01 — {t('philosophy')}
             </div>
 
-            <h2 className="highlight-text text-2xl sm:text-3xl md:text-5xl lg:text-6xl heading leading-[1.2] md:leading-[1.1] tracking-tight">
+            <h2 className="highlight-text text-2xl sm:text-3xl md:text-5xl lg:text-5xl heading leading-[1.2] md:leading-[1.1] tracking-tight">
               {t('about_intro').split(' ').map((word, i) => (
                 <span key={`${lang}-${i}`} className="inline-block mr-[0.25em] mb-[0.1em] transition-all duration-300">
                   {word}

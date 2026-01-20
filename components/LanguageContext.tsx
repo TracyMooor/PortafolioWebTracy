@@ -26,9 +26,9 @@ const translations = {
     
     // About
     philosophy: "Philosophy",
-    about_intro: "Architecture is defined by precision in every interaction. As a full-stack developer, I transform complex logic into robust web applications designed to scale and operate at high performance in production environments.",
+    about_intro: "Architecture is defined by precision in every interaction. As a full-stack developer, I transform complex logic into robust web applications that perform at a high level in production environments.",
     mindset_label: "THE MINDSET",
-    mindset_text: "Focusing on scalable architectures and pixel-perfect interfaces. I bridge the gap between design vision and technical reality.",
+    mindset_text: "Focused on scalable architectures and seamless interfaces. I bridge the gap between design vision and technical reality.",
     goal_label: "THE GOAL",
     goal_text: "Creating software that feels invisible. When code is truly great, the user only feels the experience.",
     location_label: "LOCATION",
@@ -45,8 +45,7 @@ const translations = {
     // Footer / Contact
     collaboration: "Collaboration",
     contact_h1: "Have an idea?",
-    contact_h2: "Let's build the",
-    contact_h3: "future together.",
+    contact_h2: "Let's make it happen.",
     email: "Email",
     linkedin: "LinkedIn",
     github: "GitHub",
@@ -69,7 +68,7 @@ const translations = {
     
     // About
     philosophy: "Filosofía",
-    about_intro: "La arquitectura se define por la precisión en cada interacción. Como Desarrolladora Full Stack, transformo lógica compleja en aplicaciones web robustas, diseñadas para escalar y operar con alto rendimiento en entornos de producción.",
+    about_intro: "La arquitectura se define por la precisión en cada interacción. Como Desarrolladora Full Stack, transformo lógica compleja en aplicaciones web robustas que funcionan con alto rendimiento en entornos de producción.",
     mindset_label: "LA MENTALIDAD",
     mindset_text: "Enfocada en arquitecturas escalables e interfaces perfectas. Cierro la brecha entre la visión de diseño y la realidad técnica.",
     goal_label: "EL OBJETIVO",
@@ -77,7 +76,7 @@ const translations = {
     location_label: "UBICACIÓN",
     role_label: "ROL",
     fullstack_lead: "LÍDER FULL-STACK",
-    engineering_bg: "INGENIERÍA",
+    engineering_bg: "INGENIERA",
     
     // Projects
     selectedWorks: "Proyectos Selectos",
@@ -88,8 +87,7 @@ const translations = {
     // Footer / Contact
     collaboration: "Colaboración",
     contact_h1: "¿Tienes una idea?",
-    contact_h2: "Hagámoslo",
-    contact_h3: "realidad.",
+    contact_h2: "Hagámoslo realidad.",
     email: "Correo",
     linkedin: "LinkedIn",
     github: "GitHub",

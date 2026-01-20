@@ -121,7 +121,7 @@ const Footer: React.FC = () => {
           </span>
           <div className="max-w-md">
             <p className="text-black/30 text-[10px] md:text-xs mono leading-relaxed uppercase tracking-widest text-left md:text-right">
-              {t('contact_h3')}
+              {lang === 'ESP' ? 'Construyamos el futuro juntos.' : "Let's build the future together."}
             </p>
           </div>
         </div>
@@ -132,7 +132,6 @@ const Footer: React.FC = () => {
           <h2 ref={titleRef} className="text-[15vw] lg:text-[10vw] heading font-bold leading-[0.85] tracking-tighter uppercase mb-12 lg:mb-0">
             <div className="overflow-hidden h-fit"><span className="footer-line block">{t('contact_h1')}</span></div>
             <div className="overflow-hidden h-fit"><span className="footer-line block text-zinc-400 italic font-normal">{t('contact_h2')}</span></div>
-            <div className="overflow-hidden h-fit"><span className="footer-line block underline decoration-1 underline-offset-[0.1em]">{t('contact')}</span></div>
           </h2>
         </div>
 
@@ -160,12 +159,12 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="flex flex-col gap-2 md:gap-3">
-            <span className="mono text-[8px] md:text-[9px] uppercase opacity-40 tracking-widest">LOCAL TIME</span>
+            <span className="mono text-[8px] md:text-[9px] uppercase opacity-40 tracking-widest"> {lang === 'ESP' ? 'HORA LOCAL' : 'LOCAL TIME'}</span>
             <span className="heading text-xs md:text-sm uppercase font-bold tracking-widest tabular-nums">{time} (GMT-5)</span>
           </div>
 
           <div className="flex flex-col gap-2 md:gap-3 sm:items-end md:col-start-4">
-            <span className="mono text-[8px] md:text-[9px] uppercase opacity-40 tracking-widest mb-1">SOCIAL</span>
+            <span className="mono text-[8px] md:text-[9px] uppercase opacity-40 tracking-widest mb-1">{lang === 'ESP' ? 'REDES SOCIALES' : 'SOCIAL NETWORKS'}</span>
             <div className="flex gap-4 items-center">
               <SocialIcon 
                 href="https://wa.me/51906936891" 
