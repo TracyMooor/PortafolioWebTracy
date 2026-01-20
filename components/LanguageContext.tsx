@@ -17,7 +17,7 @@ const translations = {
     about: "About",
     contact: "Contact",
     scrollDown: "Scroll Down",
-    location: "Lima, Perú",
+    location: "Tracy Moriano",
 
     // Hero
     basedIn: "Based in",
@@ -31,7 +31,7 @@ const translations = {
     mindset_text: "Focused on scalable architectures and seamless interfaces. I bridge the gap between design vision and technical reality.",
     goal_label: "THE GOAL",
     goal_text: "Creating software that feels invisible. When code is truly great, the user only feels the experience.",
-    location_label: "LOCATION",
+    location_label: "ENGINEER",
     role_label: "ROLE",
     fullstack_lead: "FULL-STACK LEAD",
     engineering_bg: "ENGINEERING",
@@ -60,7 +60,7 @@ const translations = {
     about: "Sobre mí",
     contact: "Contacto",
     scrollDown: "Deslizar",
-    location: "Lima, Perú",
+    location: "Tracy Moriano",
 
     // Hero
     basedIn: "Ubicada en",
@@ -74,7 +74,7 @@ const translations = {
     mindset_text: "Enfocada en arquitecturas escalables e interfaces perfectas. Cierro la brecha entre la visión de diseño y la realidad técnica.",
     goal_label: "EL OBJETIVO",
     goal_text: "Crear software que se sienta invisible. Cuando el código es realmente excelente, el usuario solo siente la experiencia.",
-    location_label: "UBICACIÓN",
+    location_label: "INGENIERA",
     role_label: "ROL",
     fullstack_lead: "LÍDER FULL-STACK",
     engineering_bg: "INGENIERA",
