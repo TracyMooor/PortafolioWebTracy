@@ -151,10 +151,87 @@ const Projects: React.FC = () => {
                 rel="noopener noreferrer"
                 className="relative overflow-hidden aspect-video bg-zinc-900 shadow-2xl rounded-sm block cursor-pointer group/img"
               >
+                <div className="absolute top-8 right-8 z-30 pointer-events-none animate-mouse-click-expert">
+                  <div className="relative">
+                    {/* Synchronized Expert Ripple */}
+                    <div className="absolute inset-0 w-24 h-24 -translate-x-1/2 -translate-y-1/2 border-2 border-white/20 rounded-full animate-ripple-expert pointer-events-none" />
+
+                    {/* Expert Impact Flare */}
+                    <div className="absolute inset-0 w-32 h-32 -translate-x-1/2 -translate-y-1/2 bg-white/20 blur-xl rounded-full scale-0 animate-impact-flare pointer-events-none" />
+                    <div className="absolute inset-0 w-16 h-16 -translate-x-1/2 -translate-y-1/2 bg-white blur-md rounded-full scale-0 animate-impact-flare pointer-events-none" />
+
+                    {/* DESKTOP INDICATOR: Stealth Gray Arrow */}
+                    <div className="hidden md:block animate-neon-flicker">
+                      {/* Soft Mono Ambient Glow */}
+                      <div className="absolute inset-0 bg-white/5 blur-xl rounded-full scale-125" />
+                      <svg
+                        width="38"
+                        height="38"
+                        viewBox="0 0 24 24"
+                        className="drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] transform rotate-[-95deg]"
+                      >
+                        {/* Outer Body Glow Path */}
+                        <path
+                          d="M5.5 3.21V20.8L10.07 16.23L13.12 22.5L16.22 21L13.17 14.73L18.79 14.73L5.5 3.21Z"
+                          fill="#18181b"
+                          opacity="0.8"
+                        />
+                        {/* Main Body Path */}
+                        <path
+                          d="M5.5 3.21V20.8L10.07 16.23L13.12 22.5L16.22 21L13.17 14.73L18.79 14.73L5.5 3.21Z"
+                          fill="#27272a"
+                          stroke="white"
+                          strokeWidth="1.2"
+                          strokeLinejoin="round"
+                        />
+                        {/* High-Brightness Core */}
+                        <path
+                          d="M7.5 5.5V17L10.5 14L14 21L15 20.5L11.5 13.5L16.5 13.5L7.5 5.5Z"
+                          fill="white"
+                          opacity="0.3"
+                        />
+                      </svg>
+                    </div>
+
+                    {/* MOBILE INDICATOR: Stealth Gray Arrow (Unified with Desktop) */}
+                    <div className="block md:hidden animate-neon-flicker">
+                      {/* Soft Mono Ambient Glow */}
+                      <div className="absolute inset-0 bg-white/5 blur-xl rounded-full scale-125" />
+                      <svg
+                        width="38"
+                        height="38"
+                        viewBox="0 0 24 24"
+                        className="drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] transform rotate-[-135deg]"
+                      >
+                        {/* Outer Body Glow Path */}
+                        <path
+                          d="M5.5 3.21V20.8L10.07 16.23L13.12 22.5L16.22 21L13.17 14.73L18.79 14.73L5.5 3.21Z"
+                          fill="#18181b"
+                          opacity="0.8"
+                        />
+                        {/* Main Body Path */}
+                        <path
+                          d="M5.5 3.21V20.8L10.07 16.23L13.12 22.5L16.22 21L13.17 14.73L18.79 14.73L5.5 3.21Z"
+                          fill="#27272a"
+                          stroke="white"
+                          strokeWidth="1.2"
+                          strokeLinejoin="round"
+                        />
+                        {/* High-Brightness Core */}
+                        <path
+                          d="M7.5 5.5V17L10.5 14L14 21L15 20.5L11.5 13.5L16.5 13.5L7.5 5.5Z"
+                          fill="white"
+                          opacity="0.3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
                 <img
                   src={project.img}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-[2.5s] cubic-bezier(0.19, 1, 0.22, 1) group-hover/img:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-[2.5s] cubic-bezier(0.19, 1, 0.22, 1) group-hover/img:scale-105 animate-image-impact"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-50 group-hover/img:opacity-30 transition-opacity duration-700" />
                 <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-20 overflow-hidden">
