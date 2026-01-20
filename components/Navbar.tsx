@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useLang } from './LanguageContext';
 import { useSmoothScroll } from './SmoothScroll';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const SocialIconMenu = ({ href, aria, d }: { href: string, aria: string, d: string }) => {
   return (
@@ -28,6 +29,8 @@ const Navbar: React.FC = () => {
   const menuOverlayRef = useRef<HTMLDivElement>(null);
   const menuLinksRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Entrance animation for the nav bar
@@ -87,8 +90,18 @@ const Navbar: React.FC = () => {
   }, [isMenuOpen]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    if (targetId === 'projects' || targetId === 'about' || targetId === 'contact') {
+      setIsMenuOpen(false);
+      return;
+    }
+
     e.preventDefault();
     setIsMenuOpen(false);
+
+    if (location.pathname !== '/') {
+      navigate(`/#${targetId}`);
+      return;
+    }
 
     // Smooth scroll using Lenis
     if (lenis) {
@@ -106,9 +119,9 @@ const Navbar: React.FC = () => {
   };
 
   const menuItems = [
-    { label: 'projects', id: 'projects', num: '01' },
-    { label: 'about', id: 'about', num: '02' },
-    { label: 'contact', id: 'contact', num: '03' }
+    { label: 'projects', id: 'projects', path: '/projects', num: '01' },
+    { label: 'about', id: 'about', path: '/about', num: '02' },
+    { label: 'contact', id: 'contact', path: '/contact', num: '03' }
   ];
 
   return (
@@ -118,8 +131,14 @@ const Navbar: React.FC = () => {
         className="fixed top-0 left-0 w-full z-[1001] px-6 py-4 md:px-12 md:py-6 flex justify-between items-center bg-[#050505]/80 backdrop-blur-md border-b border-white/5"
       >
         {/* Brand Group */}
-        <div
-          onClick={() => lenis?.scrollTo(0)}
+        <Link
+          to="/"
+          onClick={(e) => {
+            if (location.pathname === '/') {
+              e.preventDefault();
+              lenis?.scrollTo(0);
+            }
+          }}
           className="flex items-center gap-4 cursor-pointer group z-[1002]"
         >
           <div className="w-6 h-6 md:w-8 md:h-8 rounded-full border border-white/20 flex items-center justify-center overflow-hidden relative interactive">
@@ -129,21 +148,21 @@ const Navbar: React.FC = () => {
           <span className="heading text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase text-white whitespace-nowrap">
             Tracy Moriano
           </span>
-        </div>
+        </Link>
 
         {/* Desktop Navigation & Actions */}
         <div className="flex items-center gap-10 lg:gap-16">
           <div className="hidden md:flex items-center gap-8 lg:gap-12 mr-4 lg:mr-8">
             {menuItems.map((item) => (
-              <a
+              <Link
                 key={item.id}
-                href={`#${item.id}`}
-                onClick={(e) => handleNavClick(e, item.id)}
+                to={item.path}
+                onClick={(e) => handleNavClick(e as any, item.id)}
                 className="mono text-[9px] lg:text-[10px] uppercase tracking-[0.35em] text-white/50 hover:text-white transition-all relative group py-1 interactive"
               >
                 {t(item.label)}
                 <span className="absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-500 group-hover:w-full" />
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -190,17 +209,17 @@ const Navbar: React.FC = () => {
 
         <div ref={menuLinksRef} className="flex flex-col gap-10 relative z-10 mt-10">
           {menuItems.map((item) => (
-            <a
+            <Link
               key={item.id}
-              href={`#${item.id}`}
-              onClick={(e) => handleNavClick(e, item.id)}
+              to={item.path}
+              onClick={(e) => handleNavClick(e as any, item.id)}
               className="mobile-link group flex items-start gap-4 interactive"
             >
               <span className="mono text-[12px] text-white/30 pt-2">{item.num}</span>
               <span className="heading text-[12vw] leading-[1.1] uppercase font-bold tracking-tighter text-white transition-all duration-500 group-hover:italic group-hover:translate-x-4">
                 {t(item.label)}
               </span>
-            </a>
+            </Link>
           ))}
         </div>
 
