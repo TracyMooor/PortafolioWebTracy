@@ -186,7 +186,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-center">
              <span className="mono text-[9px] opacity-40 tracking-widest uppercase">{t('copyright')}</span>
              <span className="hidden sm:inline mono text-[9px] opacity-40">/</span>
-             <span className="mono text-[9px] opacity-40 tracking-widest uppercase">ALL RIGHTS RESERVED</span>
+             <span className="mono text-[9px] opacity-40 tracking-widest uppercase">{lang === 'ESP' ? 'TODOS LOS DERECHOS RESERVADOS' : 'ALL RIGHTS RESERVED'}</span>
           </div>
           <div className="flex items-center gap-4">
              <span className="mono text-[9px] opacity-40 uppercase tracking-widest">{t('designed_by')}</span>
