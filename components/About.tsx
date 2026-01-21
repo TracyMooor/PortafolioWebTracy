@@ -142,7 +142,7 @@ const About: React.FC = () => {
                 <span className="mono text-[9px] uppercase opacity-40 mb-1">{t('location_label')}</span>
                 <span className="heading text-xs md:text-sm uppercase tracking-widest font-bold">{t('location')}</span>
               </div>
-              <div className="flex flex-col text-right">
+              <div className="hidden md:flex flex-col text-right">
                 <span className="mono text-[9px] uppercase opacity-40 mb-1">{t('role_label')}</span>
                 <span className="heading text-xs md:text-sm uppercase tracking-widest font-bold">{t('fullstack_lead')}</span>
               </div>
