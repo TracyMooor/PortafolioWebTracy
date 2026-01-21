@@ -99,12 +99,12 @@ const ContactPage: React.FC = () => {
                             <SocialLink
                                 href="https://www.linkedin.com/in/tracymooor/"
                                 label={t('linkedin')}
-                                value="LinkedIn"
+                                value="Tracy Moriano"
                             />
                             <SocialLink
                                 href="https://github.com/TracyMooor"
                                 label={t('github')}
-                                value="GitHub"
+                                value="TracyMooor"
                             />
                             <SocialLink
                                 href="https://wa.me/51906936891"

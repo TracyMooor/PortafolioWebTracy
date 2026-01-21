@@ -160,10 +160,10 @@ const Navbar: React.FC = () => {
                 key={item.id}
                 to={item.path}
                 onClick={(e) => handleNavClick(e as any, item.id)}
-                className="mono text-[9px] lg:text-[10px] uppercase tracking-[0.35em] text-white/50 hover:text-white transition-all relative group py-1 interactive"
+                className={`mono text-[9px] lg:text-[10px] uppercase tracking-[0.35em] transition-all relative group py-1 interactive ${location.pathname === item.path ? 'text-white' : 'text-white/50 hover:text-white'}`}
               >
                 {t(item.label)}
-                <span className="absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-500 group-hover:w-full" />
+                <span className={`absolute bottom-0 left-0 h-px bg-white transition-all duration-500 ${location.pathname === item.path ? 'w-full' : 'w-0 group-hover:w-full'}`} />
               </Link>
             ))}
           </div>
@@ -217,8 +217,8 @@ const Navbar: React.FC = () => {
               onClick={(e) => handleNavClick(e as any, item.id)}
               className="mobile-link group flex items-start gap-4 interactive"
             >
-              <span className="mono text-[12px] text-white/30 pt-2">{item.num}</span>
-              <span className="heading text-[12vw] leading-[1.1] uppercase font-bold tracking-tighter text-white transition-all duration-500 group-hover:italic group-hover:translate-x-4">
+              <span className={`mono text-[12px] pt-2 transition-colors duration-500 ${location.pathname === item.path ? 'text-white' : 'text-white/30'}`}>{item.num}</span>
+              <span className={`heading text-[12vw] leading-[1.1] uppercase font-bold tracking-tighter transition-all duration-500 group-hover:italic group-hover:translate-x-4 ${location.pathname === item.path ? 'text-white italic translate-x-4' : 'text-white/40'}`}>
                 {t(item.label)}
               </span>
             </Link>
