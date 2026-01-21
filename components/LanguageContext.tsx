@@ -13,6 +13,7 @@ const translations = {
   ENG: {
     // Navbar & Common
     role: "Software Engineer | Full Stack Developer",
+    home: "Home",
     projects: "Projects",
     about: "About",
     services: "Services",
@@ -68,6 +69,7 @@ const translations = {
   ESP: {
     // Navbar & Common
     role: "Ingeniera de Software | Desarrolladora Full Stack",
+    home: "Inicio",
     projects: "Proyectos",
     about: "Sobre mí",
     services: "Servicios",
