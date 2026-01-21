@@ -15,7 +15,7 @@ const About: React.FC = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo(imageWrapperRef.current,
         { clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)', scale: 1.2 },
-        { 
+        {
           clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0% 100%)',
           scale: 1,
           duration: 2,
@@ -52,10 +52,10 @@ const About: React.FC = () => {
   useEffect(() => {
     const words = textContainerRef.current?.querySelectorAll('.highlight-text span');
     if (words) {
-      gsap.fromTo(words, 
+      gsap.fromTo(words,
         { opacity: 0.1, y: 10 },
-        { 
-          opacity: 1, 
+        {
+          opacity: 1,
           y: 0,
           stagger: 0.05,
           ease: 'none',
@@ -105,13 +105,33 @@ const About: React.FC = () => {
                 <p className="text-white/60 text-base md:text-lg leading-relaxed">{t('goal_text')}</p>
               </div>
             </div>
+
+            <div className="mt-12 md:mt-16">
+              <a
+                href="/CV_Tracy_Moriano.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-4 group cursor-pointer"
+              >
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/20 flex items-center justify-center relative overflow-hidden transition-all duration-500 group-hover:border-white">
+                  <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-expo"></div>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-black transition-colors duration-500 relative z-10">
+                    <path d="M7 7h10v10"></path>
+                    <path d="M7 17L17 7"></path>
+                  </svg>
+                </div>
+                <span className="heading text-lg md:text-xl font-bold uppercase tracking-widest border-b border-white/20 group-hover:border-white transition-all duration-500 pb-1">
+                  {t('viewCV')}
+                </span>
+              </a>
+            </div>
           </div>
 
           <div className="lg:col-span-5 relative w-full mt-10 lg:mt-0">
             <div ref={imageWrapperRef} className="relative aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-zinc-900 group rounded-sm shadow-2xl">
-              <img 
-                src="/portafoliotracy.jpg" 
-                alt="Tracy Moriano" 
+              <img
+                src="/portafoliotracy.jpg"
+                alt="Tracy Moriano"
                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>

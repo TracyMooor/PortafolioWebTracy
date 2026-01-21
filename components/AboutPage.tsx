@@ -67,9 +67,26 @@ const AboutPage: React.FC = () => {
                         {t('backToHome')}
                     </Link>
 
-                    <h1 className="page-title heading text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tighter leading-none mb-6">
-                        {t('about')}
-                    </h1>
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                        <h1 className="page-title heading text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tighter leading-none">
+                            {t('about')}
+                        </h1>
+                        <a
+                            href="/CV_Tracy_Moriano.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="page-title group relative px-8 py-4 border border-white/20 rounded-full overflow-hidden transition-all duration-500 hover:border-white"
+                        >
+                            <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-expo"></div>
+                            <span className="relative z-10 mono text-[10px] uppercase tracking-[0.3em] font-bold group-hover:text-black transition-colors duration-500 flex items-center gap-3">
+                                {t('viewCV')}
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 translate-y-[-1px]">
+                                    <path d="M7 7h10v10"></path>
+                                    <path d="M7 17L17 7"></path>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
                 </header>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24">

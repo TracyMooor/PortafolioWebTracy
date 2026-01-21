@@ -20,6 +20,7 @@ const translations = {
     location: "TRACY MORIANO",
     heroLocation: "LIMA, PERÚ",
     backToHome: "Back to Home",
+    viewCV: "View CV",
 
     // Hero
     basedIn: "Based in",
@@ -65,6 +66,7 @@ const translations = {
     location: "TRACY MORIANO",
     heroLocation: "LIMA, PERÚ",
     backToHome: "Volver al Inicio",
+    viewCV: "Ver CV",
 
     // Hero
     basedIn: "Ubicada en",

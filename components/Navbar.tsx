@@ -119,8 +119,8 @@ const Navbar: React.FC = () => {
   };
 
   const menuItems = [
-    { label: 'projects', id: 'projects', path: '/projects', num: '01' },
-    { label: 'about', id: 'about', path: '/about', num: '02' },
+    { label: 'about', id: 'about', path: '/about', num: '01' },
+    { label: 'projects', id: 'projects', path: '/projects', num: '02' },
     { label: 'contact', id: 'contact', path: '/contact', num: '03' }
   ];
 
