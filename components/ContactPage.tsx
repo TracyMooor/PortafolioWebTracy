@@ -60,7 +60,7 @@ const ContactPage: React.FC = () => {
         >
             <span className="mono text-[10px] uppercase text-white/40 mb-2 tracking-[0.4em]">{label}</span>
             <div className="flex justify-between items-center">
-                <span className="heading text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tighter group-hover:translate-x-4 transition-transform duration-500 italic group-hover:not-italic">
+                <span className="heading text-xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tighter group-hover:translate-x-4 transition-transform duration-500 italic group-hover:not-italic">
                     {value}
                 </span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 md:w-12 md:h-12 opacity-0 group-hover:opacity-100 transition-all duration-500 rotate-[-45deg] group-hover:rotate-0">
