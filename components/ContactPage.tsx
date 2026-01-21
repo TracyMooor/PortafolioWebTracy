@@ -86,6 +86,12 @@ const ContactPage: React.FC = () => {
                     <h1 className="page-title heading text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tighter leading-none mb-6">
                         {t('contact')}
                     </h1>
+                    <p className="page-title hidden md:block text-white/40 mono text-xs md:text-sm uppercase tracking-[0.25em] leading-relaxed max-w-xl">
+                        {lang === 'ESP' ? '¿Tienes una idea? Hagámoslo realidad.' : "Have an idea? Let's make it happen."}
+                    </p>
+                    <p className="page-title md:hidden text-white/40 mono text-xs uppercase tracking-[0.2em] leading-relaxed max-w-sm">
+                        {lang === 'ESP' ? 'Cada gran proyecto comienza con un mensaje. Conversemos sobre tu próxima idea.' : 'Every great project starts with a message. Let\'s talk about your next idea.'}
+                    </p>
                 </header>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 mb-32">
@@ -125,7 +131,7 @@ const ContactPage: React.FC = () => {
                             <span className="heading text-2xl md:text-3xl font-bold uppercase tracking-tight block tabular-nums">{time} (GMT-5)</span>
                         </div>
 
-                        <div className="contact-item p-8 bg-white/5 rounded-sm border border-white/10">
+                        <div className="contact-item hidden md:block p-8 bg-white/5 rounded-sm border border-white/10">
                             <p className="text-white/60 text-lg italic leading-relaxed">
                                 {lang === 'ESP' ? '"Cada gran proyecto comienza con un mensaje. Conversemos sobre tu próxima idea."' : '"Every great project starts with a message. Let\'s talk about your next idea."'}
                             </p>
