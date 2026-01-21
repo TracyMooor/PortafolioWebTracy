@@ -199,7 +199,7 @@ const Navbar: React.FC = () => {
       {/* Fullscreen Mobile Menu Overlay */}
       <div
         ref={menuOverlayRef}
-        className="fixed top-[-100%] left-0 w-full h-full bg-[#0A0A0A] z-[1000] flex flex-col px-8 pt-32 pb-12 overflow-hidden md:hidden"
+        className="fixed top-[-100%] left-0 w-full h-full bg-[#0A0A0A] z-[1000] flex flex-col px-8 pt-20 pb-12 overflow-hidden md:hidden"
       >
         {/* Background Decorative Text */}
         <div className="bg-text-menu absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -209,7 +209,7 @@ const Navbar: React.FC = () => {
         {/* Noise Texture */}
         <div className="absolute inset-0 opacity-[0.05] pointer-events-none noise-bg-texture" />
 
-        <div ref={menuLinksRef} className="flex flex-col gap-10 relative z-10 mt-10">
+        <div ref={menuLinksRef} className="flex flex-col gap-8 relative z-10 mt-4">
           {menuItems.map((item) => (
             <Link
               key={item.id}
@@ -218,7 +218,7 @@ const Navbar: React.FC = () => {
               className="mobile-link group flex items-start gap-4 interactive"
             >
               <span className={`mono text-[12px] pt-2 transition-colors duration-500 ${location.pathname === item.path ? 'text-white' : 'text-white/30'}`}>{item.num}</span>
-              <span className={`heading text-[12vw] leading-[1.1] uppercase font-bold tracking-tighter transition-all duration-500 group-hover:italic group-hover:translate-x-4 ${location.pathname === item.path ? 'text-white italic translate-x-4' : 'text-white/40'}`}>
+              <span className={`heading text-[10vw] leading-[1.1] uppercase font-bold tracking-tighter transition-all duration-500 group-hover:italic group-hover:translate-x-4 ${location.pathname === item.path ? 'text-white italic translate-x-4' : 'text-white/40'}`}>
                 {t(item.label)}
               </span>
             </Link>
