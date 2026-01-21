@@ -27,6 +27,17 @@ const ServicesPage: React.FC = () => {
                 delay: 0.4,
                 ease: 'power3.out'
             });
+
+            gsap.from('.process-step', {
+                x: -30,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.2,
+                scrollTrigger: {
+                    trigger: '.process-section',
+                    start: 'top 80%',
+                }
+            });
         }, containerRef);
 
         return () => ctx.revert();
@@ -34,100 +45,138 @@ const ServicesPage: React.FC = () => {
 
     const services = [
         {
-            id: "01",
-            title: lang === 'ESP' ? "Desarrollo Web Full-Stack" : "Full-Stack Web Development",
-            desc: lang === 'ESP' ? "Creación de aplicaciones web robustas y escalables utilizando las últimas tecnologías como React, Node.js y bases de datos avanzadas." : "Creating robust and scalable web applications using the latest technologies like React, Node.js and advanced databases.",
-            tags: ["React", "Node.js", "TypeScript", "SQL"]
+
         },
         {
-            id: "02",
-            title: lang === 'ESP' ? "Diseño de Interfaz (UI/UX)" : "UI/UX Design",
-            desc: lang === 'ESP' ? "Interfaces intuitivas y estéticamente atractivas enfocadas en la experiencia del usuario y la conversión." : "Intuitive and aesthetically pleasing interfaces focused on user experience and conversion.",
-            tags: ["Figma", "Prototyping", "User Flow"]
+
         },
         {
-            id: "03",
-            title: lang === 'ESP' ? "E-commerce & Tiendas Online" : "E-commerce Solutions",
-            desc: lang === 'ESP' ? "Desarrollo de tiendas virtuales completas con pasarelas de pago seguras y gestión de inventario optimizada." : "Development of complete virtual stores with secure payment gateways and optimized inventory management.",
-            tags: ["Shopify", "Stripe", "Dashboard"]
+
         },
         {
-            id: "04",
-            title: lang === 'ESP' ? "Optimización de Rendimiento" : "Performance Optimization",
-            desc: lang === 'ESP' ? "Mejora de la velocidad de carga y puntuaciones SEO para maximizar la visibilidad y retención de usuarios." : "Improving load speed and SEO scores to maximize visibility and user retention.",
-            tags: ["SEO", "Web Vitals", "Analytics"]
+
         },
         {
-            id: "05",
-            title: lang === 'ESP' ? "Desarrollo de Apps Móviles" : "Mobile App Development",
-            desc: lang === 'ESP' ? "Aplicaciones móviles multiplataforma que ofrecen una experiencia nativa fluida en iOS y Android." : "Cross-platform mobile applications offering a smooth native experience on iOS and Android.",
-            tags: ["React Native", "Mobile First", "API"]
+
         },
         {
-            id: "06",
-            title: lang === 'ESP' ? "Consultoría Técnica" : "Technical Consulting",
-            desc: lang === 'ESP' ? "Asesoramiento estratégico sobre arquitectura de software y selección de stack tecnológico para nuevos proyectos." : "Strategic advice on software architecture and technology stack selection for new projects.",
-            tags: ["Architecture", "Strategy", "Cloud"]
+
         }
+    ];
+
+    const steps = [
+        { num: t('step1_num'), title: t('step1_title'), desc: t('step1_desc') },
+        { num: t('step2_num'), title: t('step2_title'), desc: t('step2_desc') },
+        { num: t('step3_num'), title: t('step3_title'), desc: t('step3_desc') },
+        { num: t('step4_num'), title: t('step4_title'), desc: t('step4_desc') }
     ];
 
     return (
         <div ref={containerRef} className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black">
             <main className="pt-32 pb-20 px-6 md:px-12 lg:px-24">
-                <header className="mb-20">
-                    <Link to="/" className="inline-flex items-center gap-2 mono text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-white transition-colors mb-8 group">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 transition-transform group-hover:-translate-x-1">
-                            <line x1="19" y1="12" x2="5" y2="12"></line>
-                            <polyline points="12 19 5 12 12 5"></polyline>
-                        </svg>
-                        {t('backToHome')}
-                    </Link>
+                <header className="mb-24 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+                    <div className="max-w-3xl">
+                        <Link to="/" className="inline-flex items-center gap-2 mono text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-white transition-colors mb-12 group">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 transition-transform group-hover:-translate-x-1">
+                                <line x1="19" y1="12" x2="5" y2="12"></line>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
+                            {t('backToHome')}
+                        </Link>
 
-                    <h1 className="page-title heading text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tighter leading-none mb-6">
-                        {t('services')}
-                    </h1>
-                    <p className="max-w-2xl text-white/40 mono text-xs md:text-sm uppercase tracking-[0.2em] leading-relaxed">
-                        {lang === 'ESP' ? "SOLUCIONES DIGITALES A MEDIDA PARA IMPULSAR TU NEGOCIO AL SIGUIENTE NIVEL." : "CUSTOM DIGITAL SOLUTIONS TO DRIVE YOUR BUSINESS TO THE NEXT LEVEL."}
-                    </p>
+                        <h1 className="page-title heading text-6xl md:text-8xl lg:text-9xl font-bold uppercase tracking-tighter leading-none mb-8">
+                            {t('services')}
+                        </h1>
+                        <p className="max-w-xl text-white/40 mono text-xs md:text-sm uppercase tracking-[0.25em] leading-[1.8]">
+                            {t('services_intro')}
+                        </p>
+                    </div>
                 </header>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-                    {services.map((service, index) => (
-                        <div key={index} className="service-card group border border-white/5 bg-white/[0.02] p-8 md:p-10 rounded-sm hover:bg-white/[0.04] hover:border-white/20 transition-all duration-500 flex flex-col justify-between min-h-[400px]">
-                            <div>
-                                <span className="heading text-4xl md:text-5xl font-black text-white/10 group-hover:text-white/20 transition-colors duration-500 block mb-10 border-b border-white/5 pb-6">
-                                    {service.id}
-                                </span>
-                                <h3 className="heading text-2xl md:text-3xl font-bold uppercase tracking-tight mb-6">
-                                    {service.title}
-                                </h3>
-                                <p className="text-white/50 text-base leading-relaxed mb-10">
-                                    {service.desc}
-                                </p>
-                            </div>
 
-                            <div className="flex flex-wrap gap-2">
-                                {service.tags.map((tag, j) => (
-                                    <span key={j} className="mono text-[8px] md:text-[9px] uppercase tracking-widest px-3 py-1 border border-white/10 rounded-full text-white/30 group-hover:text-white/60 group-hover:border-white/20 transition-all duration-500">
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
+
+                {/* Process Section */}
+                <section className="process-section mb-40 border-t border-white/5 pt-24">
+                    <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
+                        <h2 className="heading text-4xl md:text-6xl font-bold uppercase tracking-tighter max-w-md">
+                            {t('process_title')}
+                        </h2>
+                        <div className="max-w-md">
+                            <p className="mono text-[10px] text-white/30 uppercase tracking-[0.3em] leading-relaxed">
+                                {lang === 'ESP' ? "Un enfoque metodológico para garantizar resultados excepcionales en cada proyecto." : "A methodological approach to ensure exceptional results in every project."}
+                            </p>
                         </div>
-                    ))}
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                        {steps.map((step, i) => (
+                            <div key={i} className="process-step group flex flex-col gap-6">
+                                <div className="flex items-center gap-6">
+                                    <span className="heading text-5xl md:text-6xl font-black text-white/20 group-hover:text-white transition-colors duration-700">{step.num}</span>
+                                    <div className="h-[2px] flex-grow bg-white/20 group-hover:bg-white transition-colors duration-700"></div>
+                                </div>
+                                <h4 className="heading text-xl md:text-2xl font-bold uppercase tracking-tight text-white">{step.title}</h4>
+                                <p className="text-white/70 text-sm leading-relaxed md:pr-4 font-medium">{step.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* FAQ/Trust Section */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-40">
+                    <div>
+                        <span className="mono text-[10px] text-white/30 uppercase tracking-[0.4em] mb-8 block">{lang === 'ESP' ? 'Por qué elegirme' : 'Why Work With Me'}</span>
+                        <h3 className="heading text-3xl md:text-5xl font-bold uppercase tracking-tighter mb-12 leading-none">
+                            {lang === 'ESP' ? "Sitios Web que Impulsan Negocios." : "Websites that Drive Business."}
+                        </h3>
+                        <div className="space-y-8">
+                            {[
+                                { t: lang === 'ESP' ? "Adaptabilidad Total" : "Total Adaptability", d: lang === 'ESP' ? "Desde tiendas locales hasta corporativos; soluciones web que se ajustan a la escala de tu empresa." : "From local shops to corporate entities; web solutions that fit your business scale." },
+                                { t: lang === 'ESP' ? "Enfoque en Conversión" : "Conversion Focused", d: lang === 'ESP' ? "Páginas diseñadas para convertir visitantes en clientes reales desde el primer día." : "Pages designed to turn visitors into real customers from day one." },
+                                { t: lang === 'ESP' ? "Tecnología de Vanguardia" : "Cutting-edge Tech", d: lang === 'ESP' ? "Sitios rápidos, seguros y optimizados para SEO que posicionan tu marca en lo más alto." : "Fast, secure, and SEO-optimized sites that position your brand at the top." }
+                            ].map((item, i) => (
+                                <div key={i} className="flex gap-6">
+                                    <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0 shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+                                    <div>
+                                        <h5 className="heading text-xl font-bold uppercase tracking-tight mb-2 text-white">{item.t}</h5>
+                                        <p className="text-white/70 text-sm font-medium">{item.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="relative aspect-square overflow-hidden rounded-sm bg-black border border-white/20">
+                        <video
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-1000"
+                        >
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-modern-connection-lines-loop-33300-large.mp4" type="video/mp4" />
+                        </video>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <div className="absolute bottom-10 left-10 z-10">
+                            <span className="heading text-6xl font-black italic text-white/10 uppercase select-none pointer-events-none block mb-4">
+                                QUALITY
+                            </span>
+                            <p className="mono text-[11px] text-white/60 font-bold uppercase tracking-[0.5em]">Engineering Passion</p>
+                        </div>
+                    </div>
                 </div>
 
+                {/* Final CTA */}
                 <div className="mt-32 p-12 md:p-24 bg-white/5 rounded-sm border border-white/10 text-center relative overflow-hidden group/cta">
                     <div className="absolute inset-0 bg-white translate-y-full group-hover/cta:translate-y-0 transition-transform duration-700 ease-expo"></div>
                     <div className="relative z-10">
                         <h2 className="heading text-4xl md:text-6xl font-bold uppercase tracking-tighter mb-8 group-hover/cta:text-black transition-colors duration-500">
-                            {lang === 'ESP' ? '¿Listo profesionalizar tu marca?' : 'Ready to professionalize your brand?'}
+                            {lang === 'ESP' ? '¿Listo para profesionalizar tu marca?' : 'Ready to professionalize your brand?'}
                         </h2>
                         <Link
                             to="/contact"
                             className="inline-flex items-center gap-4 heading text-xl md:text-2xl font-bold uppercase tracking-widest border-b-2 border-white group-hover/cta:text-black group-hover/cta:border-black transition-all duration-500 pb-2"
                         >
-                            {lang === 'ESP' ? 'Contáctame ahora' : 'Contact me now'}
+                            {lang === 'ESP' ? 'Inicia un proyecto' : 'Start a project'}
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 transition-transform group-hover/cta:translate-x-2">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>

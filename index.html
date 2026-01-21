@@ -310,6 +310,20 @@
     .noise-bg-texture {
       background-image: url('https://grainy-gradients.vercel.app/noise.svg');
     }
+
+    @keyframes spin-slow {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .animate-spin-slow {
+      animation: spin-slow 12s linear infinite;
+    }
   </style>
 
 </head>

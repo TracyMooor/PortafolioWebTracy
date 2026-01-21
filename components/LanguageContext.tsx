@@ -40,6 +40,14 @@ const translations = {
     fullstack_lead: "FULL-STACK LEAD",
     engineering_bg: "ENGINEERING",
 
+    // Services
+    services_intro: "I DESIGN AND DEVELOP PROFESSIONAL WEBSITES TAILORED FOR ALL TYPES OF BUSINESSES—FROM LOCAL SHOPS TO CORPORATE ENTITIES.",
+    process_title: "My Creative Process",
+    step1_num: "01", step1_title: "Discovery", step1_desc: "Understanding your business goals to define the ideal structure and hierarchy for your new website.",
+    step2_num: "02", step2_title: "Strategy", step2_desc: "Planning the user experience (UX) and the most efficient technology to ensure your site is fast and scalable.",
+    step3_num: "03", step3_title: "Execution", step3_desc: "Modern web development with high standards of design and security, optimized for all devices.",
+    step4_num: "04", step4_title: "Launch", step4_desc: "Final optimizations, SEO settings, and publishing your site to start growing your company online.",
+
     // Projects
     selectedWorks: "Selected Works",
     project_desc: "TRANSFORMING COMPLEX LOGIC INTO HIGH-FIDELITY DIGITAL EXPERIENCES.",
@@ -86,6 +94,14 @@ const translations = {
     role_label: "ROL",
     fullstack_lead: "LÍDER FULL-STACK",
     engineering_bg: "INGENIERA",
+
+    // Services
+    services_intro: "DISEÑO Y DESARROLLO PÁGINAS WEB PROFESIONALES A MEDIDA PARA TODO TIPO DE EMPRESAS, DESDE NEGOCIOS LOCALES HASTA CORPORACIONES.",
+    process_title: "Mi Proceso Creativo",
+    step1_num: "01", step1_title: "Descubrimiento", step1_desc: "Entender los objetivos de tu negocio para definir la estructura e jerarquía ideal de tu nueva página web.",
+    step2_num: "02", step2_title: "Estrategia", step2_desc: "Planificación de la experiencia de usuario (UX) y la tecnología más eficiente para que tu sitio sea rápido y escalable.",
+    step3_num: "03", step3_title: "Ejecución", step3_desc: "Desarrollo web moderno con altos estándares de diseño y seguridad, optimizado para todos los dispositivos.",
+    step4_num: "04", step4_title: "Lanzamiento", step4_desc: "Optimizaciones finales, configuración de SEO y publicación de tu sitio para que tu empresa empiece a crecer online.",
 
     // Projects
     selectedWorks: "Proyectos Selectos",
