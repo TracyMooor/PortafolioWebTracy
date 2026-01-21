@@ -83,7 +83,7 @@ const ServicesPage: React.FC = () => {
                         {t('backToHome')}
                     </Link>
 
-                    <h1 className="page-title heading text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tighter leading-none mb-8">
+                    <h1 className="page-title heading text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tighter leading-none mb-6">
                         {t('services')}
                     </h1>
                     <p className="max-w-xl text-white/40 mono text-xs md:text-sm uppercase tracking-[0.25em] leading-[1.8]">
@@ -94,7 +94,7 @@ const ServicesPage: React.FC = () => {
 
 
                 {/* Process Section */}
-                <section className="process-section mb-40 border-t border-white/5 pt-24">
+                <section className="process-section mb-40 border-t border-white/5 pt-12">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
                         <h2 className="heading text-4xl md:text-6xl font-bold uppercase tracking-tighter max-w-md">
                             {t('process_title')}
