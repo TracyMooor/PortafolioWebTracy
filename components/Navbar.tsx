@@ -90,7 +90,7 @@ const Navbar: React.FC = () => {
   }, [isMenuOpen]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    if (targetId === 'projects' || targetId === 'about' || targetId === 'contact') {
+    if (targetId === 'projects' || targetId === 'about' || targetId === 'contact' || targetId === 'services') {
       setIsMenuOpen(false);
       return;
     }
@@ -120,8 +120,9 @@ const Navbar: React.FC = () => {
 
   const menuItems = [
     { label: 'about', id: 'about', path: '/about', num: '01' },
-    { label: 'projects', id: 'projects', path: '/projects', num: '02' },
-    { label: 'contact', id: 'contact', path: '/contact', num: '03' }
+    { label: 'services', id: 'services', path: '/services', num: '02' },
+    { label: 'projects', id: 'projects', path: '/projects', num: '03' },
+    { label: 'contact', id: 'contact', path: '/contact', num: '04' }
   ];
 
   return (

@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import ProjectsPage from './components/ProjectsPage';
 import AboutPage from './components/AboutPage';
+import ServicesPage from './components/ServicesPage';
 import ContactPage from './components/ContactPage';
 import Preloader from './components/Preloader';
 import ScrollToTop from './components/ScrollToTop';
@@ -58,6 +59,7 @@ const App: React.FC = () => {
               } />
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
               <Route path="/contact" element={<ContactPage />} />
             </Routes>
           </div>
