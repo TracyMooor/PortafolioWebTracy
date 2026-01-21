@@ -74,23 +74,21 @@ const ServicesPage: React.FC = () => {
     return (
         <div ref={containerRef} className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black">
             <main className="pt-32 pb-20 px-6 md:px-12 lg:px-24">
-                <header className="mb-24 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
-                    <div className="max-w-3xl">
-                        <Link to="/" className="inline-flex items-center gap-2 mono text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-white transition-colors mb-12 group">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 transition-transform group-hover:-translate-x-1">
-                                <line x1="19" y1="12" x2="5" y2="12"></line>
-                                <polyline points="12 19 5 12 12 5"></polyline>
-                            </svg>
-                            {t('backToHome')}
-                        </Link>
+                <header className="mb-20">
+                    <Link to="/" className="inline-flex items-center gap-2 mono text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-white transition-colors mb-8 group">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 transition-transform group-hover:-translate-x-1">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                        {t('backToHome')}
+                    </Link>
 
-                        <h1 className="page-title heading text-6xl md:text-8xl lg:text-9xl font-bold uppercase tracking-tighter leading-none mb-8">
-                            {t('services')}
-                        </h1>
-                        <p className="max-w-xl text-white/40 mono text-xs md:text-sm uppercase tracking-[0.25em] leading-[1.8]">
-                            {t('services_intro')}
-                        </p>
-                    </div>
+                    <h1 className="page-title heading text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tighter leading-none mb-8">
+                        {t('services')}
+                    </h1>
+                    <p className="max-w-xl text-white/40 mono text-xs md:text-sm uppercase tracking-[0.25em] leading-[1.8]">
+                        {t('services_intro')}
+                    </p>
                 </header>
 
 
@@ -189,7 +187,7 @@ const ServicesPage: React.FC = () => {
             <div className="fixed inset-0 z-[-1] pointer-events-none opacity-[0.02]">
                 <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:80px_80px]"></div>
             </div>
-        </div>
+        </div >
     );
 };
 
