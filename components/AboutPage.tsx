@@ -131,7 +131,7 @@ const AboutPage: React.FC = () => {
                     <div className="lg:col-span-5 relative">
                         <div className="about-image relative aspect-[3/4] overflow-hidden bg-zinc-900 rounded-sm shadow-2xl">
                             <img
-                                src="/portafoliotracy.jpg"
+                                src="/portafoliotracy.jpeg"
                                 alt="Tracy Moriano"
                                 className="w-full h-full object-cover"
                             />
