@@ -112,7 +112,7 @@ const AboutPage: React.FC = () => {
                         </div>
 
                         <div className="mt-20 hidden md:block">
-                            <h4 className="mono text-[10px] uppercase opacity-40 mb-10 tracking-[0.4em]">EXPERTISE</h4>
+                            <h4 className="mono text-[10px] uppercase opacity-40 mb-10 tracking-[0.4em]">{t('expertise_label')}</h4>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
                                 {skills.map((skill, i) => (
                                     <div key={i} className="stat-item">

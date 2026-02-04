@@ -31,15 +31,16 @@ const translations = {
 
     // About
     philosophy: "Philosophy",
-    about_intro: "Architecture is defined by precision in every interaction. As a full-stack developer, I transform complex logic into robust web applications that perform at a high level in production environments.",
+    about_intro: "Precision has defined my path in the world of technological development. I started solving complex problems as a Full Stack Developer, and today, as Co-Founder of Kasa Tech Solutions, I create robust web solutions that drive business growth in production environments.",
     mindset_label: "THE MINDSET",
-    mindset_text: "Focused on scalable architectures and seamless interfaces. I bridge the gap between design vision and technical reality.",
+    mindset_text: "Solving with logic, precision, and a focus on results. Every technical decision must have a clear purpose and add value to the business.",
     goal_label: "THE GOAL",
-    goal_text: "Creating software that feels invisible. When code is truly great, the user only feels the experience.",
+    goal_text: "To design and develop professional websites that help companies look better, build trust, and grow.",
     location_label: "ENGINEER",
     role_label: "ROLE",
     fullstack_lead: "FULL-STACK LEAD",
     engineering_bg: "ENGINEERING",
+    expertise_label: "TECHNOLOGIES",
 
     // Services
     services_intro: "I DESIGN AND DEVELOP PROFESSIONAL WEBSITES TAILORED FOR ALL TYPES OF BUSINESSES—FROM LOCAL SHOPS TO CORPORATE ENTITIES.",
@@ -87,15 +88,16 @@ const translations = {
 
     // About
     philosophy: "Filosofía",
-    about_intro: "La arquitectura se define por la precisión en cada interacción. Como Desarrolladora Full Stack, transformo lógica compleja en aplicaciones web robustas que funcionan con alto rendimiento en entornos de producción.",
+    about_intro: "La precisión ha marcado mi camino en el mundo del desarrollo tecnológico. Empecé resolviendo problemas complejos como Desarrolladora Full Stack y hoy, como Co-Founder de Kasa Tech Solutions, creo soluciones web robustas que impulsan negocios en entornos de producción.",
     mindset_label: "LA MENTALIDAD",
-    mindset_text: "Enfocada en arquitecturas escalables e interfaces perfectas. Cierro la brecha entre la visión de diseño y la realidad técnica.",
+    mindset_text: "Resolver con lógica, precisión y enfoque en resultados. Cada decisión técnica debe tener un propósito claro y aportar valor al negocio.",
     goal_label: "EL OBJETIVO",
-    goal_text: "Crear software que se sienta invisible. Cuando el código es realmente excelente, el usuario solo siente la experiencia.",
+    goal_text: "Diseñar y desarrollar páginas web profesionales que ayuden a las empresas a verse mejor, generar confianza y crecer.",
     location_label: "INGENIERA",
     role_label: "ROL",
     fullstack_lead: "LÍDER FULL-STACK",
     engineering_bg: "INGENIERA",
+    expertise_label: "TECNOLOGÍAS",
 
     // Services
     services_intro: "DISEÑO Y DESARROLLO PÁGINAS WEB PROFESIONALES A MEDIDA PARA TODO TIPO DE EMPRESAS, DESDE NEGOCIOS LOCALES HASTA CORPORACIONES.",
