@@ -113,7 +113,7 @@ const ContactPage: React.FC = () => {
                                 value="TracyMooor"
                             />
                             <SocialLink
-                                href="https://wa.me/51906936891"
+                                href="https://wa.me/51906936891?text=Hola%20Tracy%20%F0%9F%98%8A%2C%20acabo%20de%20ver%20tu%20perfil%20y%20me%20interesa%20lo%20que%20haces.%20%C2%BFPodemos%20coordinar%20una%20reuni%C3%B3n%20para%20hablar%20sobre%20un%20proyecto%3F"
                                 label="WhatsApp"
                                 value="+51 906 936 891"
                             />
