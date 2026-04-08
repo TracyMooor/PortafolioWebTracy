@@ -108,7 +108,7 @@ const About: React.FC = () => {
 
             <div className="mt-12 md:mt-16">
               <a
-                href="/CV - TRACY MORIANO .pdf"
+                href={lang === 'ESP' ? "/CV (ESP) - TRACY MORIANO T.pdf" : "/CV (ENG) - TRACY MORIANO T.pdf"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-4 group cursor-pointer"

@@ -72,7 +72,7 @@ const AboutPage: React.FC = () => {
                             {t('about')}
                         </h1>
                         <a
-                            href="/CV - TRACY MORIANO .pdf"
+                            href={lang === 'ESP' ? "/CV (ESP) - TRACY MORIANO T.pdf" : "/CV (ENG) - TRACY MORIANO T.pdf"}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="page-title group relative px-8 py-4 border border-white/20 rounded-full overflow-hidden transition-all duration-500 hover:border-white"
