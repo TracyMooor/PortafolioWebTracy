@@ -129,7 +129,18 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [lang, setLang] = useState<Language>('ENG');
+  const [lang, setLang] = useState<Language>(() => {
+    if (typeof window === 'undefined') return 'ENG';
+    
+    // Get the browser language (navigator.language)
+    const browserLang = navigator.language || (navigator as any).userLanguage || 'en';
+    
+    // Default to ESP if Spanish, otherwise ENG
+    if (browserLang.toLowerCase().startsWith('es')) {
+      return 'ESP';
+    }
+    return 'ENG';
+  });
 
   const t = (key: string) => {
     return (translations[lang] as any)[key] || key;
