@@ -31,7 +31,7 @@ const translations = {
 
     // About
     philosophy: "Philosophy",
-    about_intro: "Precision has defined my path in the world of technological development. I started solving complex problems as a Full Stack Developer, and today, as Co-Founder of Kasa Tech Solutions, I create robust web solutions that drive business growth in production environments.",
+    about_intro: "Precision has defined my path in the world of technological development. I started solving complex problems, and today I create robust web solutions that drive business growth in production environments.",
     mindset_label: "THE MINDSET",
     mindset_text: "Solving with logic, precision, and a focus on results. Every technical decision must have a clear purpose and add value to the business.",
     goal_label: "THE GOAL",
@@ -88,7 +88,7 @@ const translations = {
 
     // About
     philosophy: "Filosofía",
-    about_intro: "La precisión ha marcado mi camino en el mundo del desarrollo tecnológico. Empecé resolviendo problemas complejos como Desarrolladora Full Stack y hoy, como Co-Founder de Kasa Tech Solutions, creo soluciones web robustas que impulsan negocios en entornos de producción.",
+    about_intro: "La precisión ha marcado mi camino en el mundo del desarrollo tecnológico. Empecé resolviendo problemas complejos y hoy creo soluciones web robustas que impulsan negocios en entornos de producción.",
     mindset_label: "LA MENTALIDAD",
     mindset_text: "Resolver con lógica, precisión y enfoque en resultados. Cada decisión técnica debe tener un propósito claro y aportar valor al negocio.",
     goal_label: "EL OBJETIVO",
