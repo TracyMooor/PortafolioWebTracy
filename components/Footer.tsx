@@ -68,6 +68,7 @@ const Footer: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const [time, setTime] = useState('');
+  const videoSrc = lang === 'ESP' ? '/tracyvideo.mp4' : '/tracyvideoingles.mp4';
 
   useEffect(() => {
     const updateTime = () => {
@@ -133,6 +134,22 @@ const Footer: React.FC = () => {
             <div className="overflow-hidden h-fit"><span className="footer-line block">{t('contact_h1')}</span></div>
             <div className="overflow-hidden h-fit"><span className="footer-line block text-zinc-400 italic font-normal">{t('contact_h2')}</span></div>
           </h2>
+
+          {/* Video en móvil, posicionado debajo del título de contacto en el Footer */}
+          <div className="block lg:hidden w-full mt-8 mb-4">
+            <div className="relative aspect-video overflow-hidden rounded-sm bg-black border border-black/10">
+              <video
+                key={videoSrc}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover opacity-80"
+              >
+                <source src={videoSrc} type="video/mp4" />
+              </video>
+            </div>
+          </div>
         </div>
 
         <div className="w-full lg:w-[450px] flex flex-col">
