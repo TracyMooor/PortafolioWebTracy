@@ -223,6 +223,8 @@ const ServicesPage: React.FC = () => {
         }
     ];
 
+    const videoSrc = lang === 'ESP' ? '/tracyvideo.mp4' : '/tracyvideoingles.mp4';
+
     return (
         <div ref={containerRef} className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black">
             <main className="pt-32 pb-20 px-6 md:px-12 lg:px-24">
@@ -294,6 +296,7 @@ const ServicesPage: React.FC = () => {
                 <div className="block lg:hidden w-full mb-32">
                     <div className="relative aspect-square overflow-hidden rounded-sm bg-black border border-white/20 group/video-mobile">
                         <video
+                            key={videoSrc}
                             ref={mobileVideoRef}
                             autoPlay
                             muted
@@ -301,7 +304,7 @@ const ServicesPage: React.FC = () => {
                             playsInline
                             className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover/video-mobile:opacity-100 transition-opacity duration-1000"
                         >
-                            <source src="/tracyvideo.mp4" type="video/mp4" />
+                            <source src={videoSrc} type="video/mp4" />
                         </video>
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
                         <div className="absolute bottom-10 left-10 z-10">
@@ -377,6 +380,7 @@ const ServicesPage: React.FC = () => {
                     </div>
                     <div className="hidden lg:block relative aspect-square overflow-hidden rounded-sm bg-black border border-white/20 group/video">
                         <video
+                            key={videoSrc}
                             ref={videoRef}
                             autoPlay
                             muted
@@ -384,7 +388,7 @@ const ServicesPage: React.FC = () => {
                             playsInline
                             className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover/video:opacity-100 transition-opacity duration-1000"
                         >
-                            <source src="/tracyvideo.mp4" type="video/mp4" />
+                            <source src={videoSrc} type="video/mp4" />
                         </video>
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
                         <div className="absolute bottom-10 left-10 z-10">
