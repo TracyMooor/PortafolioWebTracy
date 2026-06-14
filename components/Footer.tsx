@@ -39,7 +39,7 @@ const MagneticLink = ({ href, children, label }: { href: string, children: React
       className="group relative flex flex-col py-5 md:py-6 border-b border-black/10 hover:border-black transition-colors duration-500"
     >
       <span className="mono text-[8px] md:text-[9px] uppercase opacity-40 mb-1 md:mb-2 tracking-widest">{label}</span>
-      <span className="heading text-2xl sm:text-3xl md:text-5xl lg:text-5xl uppercase tracking-tighter font-bold transition-transform duration-500 md:group-hover:translate-x-4">
+      <span className="heading text-xl sm:text-2xl md:text-3xl lg:text-3xl uppercase tracking-tighter font-bold transition-transform duration-500 md:group-hover:translate-x-4">
         {children}
       </span>
     </a>
@@ -129,7 +129,7 @@ const Footer: React.FC = () => {
 
       <div className="relative z-10 flex flex-col lg:flex-row gap-16 md:gap-20 items-start lg:items-end flex-grow">
         <div className="flex-grow w-full">
-          <h2 ref={titleRef} className="text-[15vw] lg:text-[10vw] heading font-bold leading-[0.85] tracking-tighter uppercase mb-12 lg:mb-0">
+          <h2 ref={titleRef} className="text-[12vw] sm:text-[9vw] lg:text-[5.5vw] heading font-bold leading-[0.85] tracking-tighter uppercase mb-12 lg:mb-0">
             <div className="overflow-hidden h-fit"><span className="footer-line block">{t('contact_h1')}</span></div>
             <div className="overflow-hidden h-fit"><span className="footer-line block text-zinc-400 italic font-normal">{t('contact_h2')}</span></div>
           </h2>
