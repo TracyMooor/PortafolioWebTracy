@@ -69,6 +69,15 @@ const Footer: React.FC = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const [time, setTime] = useState('');
   const videoSrc = lang === 'ESP' ? '/tracyvideo.mp4' : '/tracyvideoingles.mp4';
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
 
   useEffect(() => {
     const updateTime = () => {
@@ -137,17 +146,38 @@ const Footer: React.FC = () => {
 
           {/* Video en móvil, posicionado debajo del título de contacto en el Footer */}
           <div className="block lg:hidden w-full mt-8 mb-4">
-            <div className="relative aspect-video overflow-hidden rounded-sm bg-black border border-black/10">
+            <div className="relative aspect-square overflow-hidden rounded-sm bg-black border border-black/10">
               <video
                 key={videoSrc}
+                ref={videoRef}
                 autoPlay
-                muted
+                muted={isMuted}
                 loop
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover opacity-80"
               >
                 <source src={videoSrc} type="video/mp4" />
               </video>
+
+              {/* Botón flotante de altavoz */}
+              <button
+                onClick={toggleMute}
+                className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-black/50 border border-white/10 hover:border-white flex items-center justify-center text-white/60 hover:text-white transition-all duration-300 interactive"
+                aria-label={isMuted ? "Unmute video" : "Mute video"}
+              >
+                {isMuted ? (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                    <path d="M9 9v6a3 3 0 0 0 3 3h1.586l4.707 4.707A1 1 0 0 0 20 22V4a1 1 0 0 0-1.707-.707L13.586 8H12a3 3 0 0 0-3 3z"></path>
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                  </svg>
+                )}
+              </button>
             </div>
           </div>
         </div>
