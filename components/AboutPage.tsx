@@ -153,10 +153,10 @@ const AboutPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-32 p-12 md:p-24 bg-white/5 rounded-sm border border-white/10 text-center relative overflow-hidden group/projects">
+                <div className="mt-32 py-16 px-6 md:p-24 bg-white/5 rounded-sm border border-white/10 text-center relative overflow-hidden group/projects">
                     <div className="absolute inset-0 bg-white translate-y-full group-hover/projects:translate-y-0 transition-transform duration-700 ease-expo"></div>
                     <div className="relative z-10">
-                        <h2 className="heading text-4xl md:text-6xl font-bold uppercase tracking-tighter mb-8 group-hover/projects:text-black transition-colors duration-500">
+                        <h2 className="heading text-2xl sm:text-4xl md:text-6xl font-bold uppercase tracking-tighter mb-8 group-hover/projects:text-black transition-colors duration-500">
                             {lang === 'ESP' ? '¿Quieres ver mis trabajos?' : 'Want to see my work?'}
                         </h2>
                         <Link

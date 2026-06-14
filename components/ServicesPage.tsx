@@ -339,10 +339,10 @@ const ServicesPage: React.FC = () => {
                 </div>
 
                 {/* Final CTA */}
-                <div className="mt-32 p-12 md:p-24 bg-white/5 rounded-sm border border-white/10 text-center relative overflow-hidden group/cta">
+                <div className="mt-32 py-16 px-6 md:p-24 bg-white/5 rounded-sm border border-white/10 text-center relative overflow-hidden group/cta">
                     <div className="absolute inset-0 bg-white translate-y-full group-hover/cta:translate-y-0 transition-transform duration-700 ease-expo"></div>
                     <div className="relative z-10">
-                        <h2 className="heading text-4xl md:text-6xl font-bold uppercase tracking-tighter mb-8 group-hover/cta:text-black transition-colors duration-500">
+                        <h2 className="heading text-2xl sm:text-4xl md:text-6xl font-bold uppercase tracking-tighter mb-8 group-hover/cta:text-black transition-colors duration-500">
                             {lang === 'ESP' ? '¿Listo para profesionalizar tu marca?' : 'Ready to professionalize your brand?'}
                         </h2>
                         <Link
