@@ -114,8 +114,8 @@ const ContactPage: React.FC = () => {
                             />
                             <SocialLink
                                 href={lang === 'ESP'
-                                    ? "https://wa.me/51906936891?text=Hola%20Tracy,%20acabo%20de%20ver%20tu%20perfil%20y%20me%20interesa%20lo%20que%20haces.%20%C2%BFPodemos%20coordinar%20una%20reuni%C3%B3n%20para%20hablar%20sobre%20un%20proyecto%3F"
-                                    : "https://wa.me/51906936891?text=Hi%20Tracy,%20I%20just%20saw%20your%20profile%20and%20I'm%20interested%20in%20your%20work.%20Can%20we%20schedule%20a%20meeting%20to%20talk%20about%20a%20project%3F"}
+                                    ? "https://wa.me/51906936891?text=Hola%20Tracy,%20acabo%20de%20ver%20tu%20portafolio%20y%20me%20interesa%20lo%20que%20haces.%20%C2%BFPodemos%20coordinar%20una%20reuni%C3%B3n%20para%20hablar%20sobre%20un%20proyecto%3F"
+                                    : "https://wa.me/51906936891?text=Hi%20Tracy,%20I%20just%20saw%20your%20portfolio%20and%20I'm%20interested%20in%20your%20work.%20Can%20we%20schedule%20a%20meeting%20to%20talk%20about%20a%20project%3F"}
                                 label="WhatsApp"
                                 value="+51 906 936 891"
                             />
