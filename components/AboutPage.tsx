@@ -59,7 +59,7 @@ const AboutPage: React.FC = () => {
         <div ref={containerRef} className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black">
             <main className="pt-32 pb-20 px-6 md:px-12 lg:px-24">
                 <header className="mb-20">
-                    <Link to="/" className="inline-flex items-center gap-2 mono text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-white transition-colors mb-8 group">
+                    <Link to="/" className="inline-flex md:hidden items-center gap-2 mono text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-white transition-colors mb-8 group">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 transition-transform group-hover:-translate-x-1">
                             <line x1="19" y1="12" x2="5" y2="12"></line>
                             <polyline points="12 19 5 12 12 5"></polyline>
