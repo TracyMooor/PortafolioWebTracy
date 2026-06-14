@@ -136,7 +136,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="w-full lg:w-[450px] flex flex-col">
-          <MagneticLink href="mailto:tracynicolehmorianotuanama@gmail.com" label={t('email')}>
+          <MagneticLink href="https://mail.google.com/mail/?view=cm&fs=1&to=tracynicolehmorianotuanama@gmail.com" label={t('email')}>
             {lang === 'ESP' ? 'Tracy@gmail.com' : 'Tracy@gmail.com'}
           </MagneticLink>
           <MagneticLink href="https://www.linkedin.com/in/tracymooor/" label={t('linkedin')}>

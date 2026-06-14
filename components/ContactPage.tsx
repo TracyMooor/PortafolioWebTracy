@@ -98,7 +98,7 @@ const ContactPage: React.FC = () => {
                     <div className="lg:col-span-7">
                         <div className="flex flex-col gap-0">
                             <SocialLink
-                                href="mailto:tracynicolehmorianotuanama@gmail.com"
+                                href="https://mail.google.com/mail/?view=cm&fs=1&to=tracynicolehmorianotuanama@gmail.com"
                                 label={t('email')}
                                 value="Tracy@gmail.com"
                             />
