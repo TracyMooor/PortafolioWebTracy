@@ -127,7 +127,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row gap-16 md:gap-20 items-start lg:items-end flex-grow">
+      <div className="relative z-10 flex flex-col lg:flex-row gap-16 md:gap-20 items-start lg:items-center flex-grow">
         <div className="flex-grow w-full">
           <h2 ref={titleRef} className="text-[12vw] sm:text-[9vw] lg:text-[5.5vw] heading font-bold leading-[0.85] tracking-tighter uppercase mb-12 lg:mb-0">
             <div className="overflow-hidden h-fit"><span className="footer-line block">{t('contact_h1')}</span></div>
