@@ -26,5 +26,15 @@ export const projects = [
         link: 'https://kairo-pi-lime.vercel.app/',
         accentColor: '#F59E0B', // Amber/Gold
         glowColor: 'rgba(245, 158, 11, 0.6)',
+    },
+    {
+        title: 'VIVANTA FARMA',
+        category: 'Visit Web',
+        year: '2026',
+        img: '/vivantafarma.jpeg',
+        link: 'https://vivantafarma.vercel.app/',
+        accentColor: '#0EA5E9', // Sky Blue
+        glowColor: 'rgba(14, 165, 233, 0.6)',
     }
 ];
+
