@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { useLang } from './LanguageContext';
@@ -6,6 +6,15 @@ import { useLang } from './LanguageContext';
 const ServicesPage: React.FC = () => {
     const { lang, t } = useLang();
     const containerRef = useRef<HTMLDivElement>(null);
+    const [isMuted, setIsMuted] = useState(true);
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    const toggleMute = () => {
+        if (videoRef.current) {
+            videoRef.current.muted = !videoRef.current.muted;
+            setIsMuted(videoRef.current.muted);
+        }
+    };
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -318,23 +327,40 @@ const ServicesPage: React.FC = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="relative aspect-square overflow-hidden rounded-sm bg-black border border-white/20">
+                    <div className="relative aspect-square overflow-hidden rounded-sm bg-black border border-white/20 group/video">
                         <video
+                            ref={videoRef}
                             autoPlay
                             muted
                             loop
                             playsInline
-                            className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-1000"
+                            className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover/video:opacity-100 transition-opacity duration-1000"
                         >
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-modern-connection-lines-loop-33300-large.mp4" type="video/mp4" />
+                            <source src="/tracyvideo.mp4" type="video/mp4" />
                         </video>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
                         <div className="absolute bottom-10 left-10 z-10">
-                            <span className="heading text-6xl font-black italic text-white/10 uppercase select-none pointer-events-none block mb-4">
-                                QUALITY
-                            </span>
-                            <p className="mono text-[11px] text-white/60 font-bold uppercase tracking-[0.5em]">Engineering Passion</p>
                         </div>
+
+                        {/* Custom Speaker Toggle Button in top-right corner */}
+                        <button
+                            onClick={toggleMute}
+                            className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-black/50 border border-white/10 hover:border-white flex items-center justify-center text-white/60 hover:text-white transition-all duration-300 interactive"
+                            aria-label={isMuted ? "Unmute video" : "Mute video"}
+                        >
+                            {isMuted ? (
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                                    <path d="M9 9v6a3 3 0 0 0 3 3h1.586l4.707 4.707A1 1 0 0 0 20 22V4a1 1 0 0 0-1.707-.707L13.586 8H12a3 3 0 0 0-3 3z"></path>
+                                </svg>
+                            ) : (
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                                </svg>
+                            )}
+                        </button>
                     </div>
                 </div>
 
