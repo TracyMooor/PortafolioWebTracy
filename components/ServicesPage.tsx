@@ -8,6 +8,15 @@ const ServicesPage: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [isMuted, setIsMuted] = useState(true);
     const videoRef = useRef<HTMLVideoElement>(null);
+    const [isMobileMuted, setIsMobileMuted] = useState(true);
+    const mobileVideoRef = useRef<HTMLVideoElement>(null);
+
+    const toggleMobileMute = () => {
+        if (mobileVideoRef.current) {
+            mobileVideoRef.current.muted = !mobileVideoRef.current.muted;
+            setIsMobileMuted(mobileVideoRef.current.muted);
+        }
+    };
 
     const toggleMute = () => {
         if (videoRef.current) {
@@ -281,6 +290,45 @@ const ServicesPage: React.FC = () => {
                     ))}
                 </div>
 
+                {/* Mobile-Only Video: Positioned directly after the 12 services */}
+                <div className="block lg:hidden w-full mb-32">
+                    <div className="relative aspect-square overflow-hidden rounded-sm bg-black border border-white/20 group/video-mobile">
+                        <video
+                            ref={mobileVideoRef}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover/video-mobile:opacity-100 transition-opacity duration-1000"
+                        >
+                            <source src="/tracyvideo.mp4" type="video/mp4" />
+                        </video>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                        <div className="absolute bottom-10 left-10 z-10">
+                        </div>
+
+                        {/* Custom Speaker Toggle Button in top-right corner */}
+                        <button
+                            onClick={toggleMobileMute}
+                            className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-black/50 border border-white/10 hover:border-white flex items-center justify-center text-white/60 hover:text-white transition-all duration-300 interactive"
+                            aria-label={isMobileMuted ? "Unmute video" : "Mute video"}
+                        >
+                            {isMobileMuted ? (
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                                    <path d="M9 9v6a3 3 0 0 0 3 3h1.586l4.707 4.707A1 1 0 0 0 20 22V4a1 1 0 0 0-1.707-.707L13.586 8H12a3 3 0 0 0-3 3z"></path>
+                                </svg>
+                            ) : (
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                                </svg>
+                            )}
+                        </button>
+                    </div>
+                </div>
+
                 {/* Process Section */}
                 <section className="process-section mb-40 border-t border-white/5 pt-12">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
@@ -327,7 +375,7 @@ const ServicesPage: React.FC = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="relative aspect-square overflow-hidden rounded-sm bg-black border border-white/20 group/video">
+                    <div className="hidden lg:block relative aspect-square overflow-hidden rounded-sm bg-black border border-white/20 group/video">
                         <video
                             ref={videoRef}
                             autoPlay
