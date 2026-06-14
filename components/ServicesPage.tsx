@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
@@ -19,11 +18,11 @@ const ServicesPage: React.FC = () => {
                 ease: 'expo.out'
             });
 
-            gsap.from('.service-card', {
-                y: 40,
+            gsap.from('.service-row-item', {
+                y: 30,
                 opacity: 0,
                 duration: 1,
-                stagger: 0.1,
+                stagger: 0.05,
                 delay: 0.4,
                 ease: 'power3.out'
             });
@@ -45,30 +44,165 @@ const ServicesPage: React.FC = () => {
 
     const services = [
         {
-
+            num: "01",
+            category: "Websites",
+            title: lang === 'ESP' ? "Páginas Web Profesionales" : "Professional Websites",
+            desc: lang === 'ESP'
+                ? "Diseño y desarrollo de sitios web corporativos y de aterrizaje (landing pages). Diseñados para captar clientes, transmitir credibilidad y posicionar tu negocio en el mercado."
+                : "Design and development of corporate sites and landing pages. Built to attract customers, project credibility, and position your business in the market.",
+            tags: ["HTML / CSS", "Tailwind", "Responsive", "SEO"]
         },
         {
-
+            num: "02",
+            category: "Full-Stack",
+            title: lang === 'ESP' ? "Desarrollo Web Full Stack" : "Full Stack Web Development",
+            desc: lang === 'ESP'
+                ? "Plataformas web autoadministrables y dinámicas. Construcción de sistemas completos conectando paneles administrativos con bases de datos estables y seguras."
+                : "Dynamic, self-managed web platforms. Engineering complete end-to-end systems linking admin dashboards with stable and secure databases.",
+            tags: ["React / Next.js", "Node.js", "Databases", "Auth"]
         },
         {
-
+            num: "03",
+            category: "Frontend",
+            title: lang === 'ESP' ? "Desarrollo Frontend" : "Frontend Development",
+            desc: lang === 'ESP'
+                ? "Interfaces modernas, interactivas y veloces. Maquetación limpia a partir de diseños de Figma con animaciones fluidas y excelente experiencia de usuario."
+                : "Modern, interactive, and ultra-fast user interfaces. Translating Figma wireframes into clean, semantic code with fluid animations and responsive layouts.",
+            tags: ["TypeScript", "GSAP", "React", "CSS Animation"]
         },
         {
-
+            num: "04",
+            category: "Backend",
+            title: lang === 'ESP' ? "Desarrollo Backend" : "Backend Development",
+            desc: lang === 'ESP'
+                ? "Arquitectura y lógica de servidores sólida. Creación de servidores óptimos, estructuración de bases de datos relacionales y optimización de consultas."
+                : "Robust server logic and architectures. Creating optimized servers, structuring database queries, and securing business rules.",
+            tags: ["Express / NestJS", "PostgreSQL", "SQL Server", "Security"]
         },
         {
-
+            num: "05",
+            category: "Mobile",
+            title: lang === 'ESP' ? "Aplicaciones Móviles" : "Mobile Applications",
+            desc: lang === 'ESP'
+                ? "Desarrollo de aplicaciones híbridas y nativas para iOS y Android. Experiencias móviles enfocadas en rendimiento y preparadas para las tiendas de apps."
+                : "Developing hybrid and native mobile apps for iOS & Android. Mobile experiences optimized for performance and ready for the App / Play stores.",
+            tags: ["React Native", "Expo", "App Store / Play Store"]
         },
         {
-
+            num: "06",
+            category: "AI Agents",
+            title: lang === 'ESP' ? "Chatbots Inteligentes" : "Intelligent Chatbots",
+            desc: lang === 'ESP'
+                ? "Asistentes de conversación autónomos. Integración de flujos inteligentes en web y WhatsApp para responder consultas, calificar prospectos y guiar ventas 24/7."
+                : "Autonomous conversational assistants. Integrating smart conversational flows into webs and WhatsApp to answer FAQs and capture leads 24/7.",
+            tags: ["NLP Flow", "WhatsApp API", "AI Chat", "Autopilot"]
+        },
+        {
+            num: "07",
+            category: "Integrations",
+            title: lang === 'ESP' ? "Integración de APIs" : "API Integration",
+            desc: lang === 'ESP'
+                ? "Conexión fluida de sistemas y plataformas. Integración de pasarelas de pago, facturación electrónica, sistemas CRM, ERPs y herramientas externas."
+                : "Seamless integration between different systems and platforms. Hooking up payment gateways, invoicing systems, CRMs, ERPs, and external tools.",
+            tags: ["Stripe / PayPal", "Webhooks", "REST APIs", "OAuth"]
+        },
+        {
+            num: "08",
+            category: "AI Workflows",
+            title: lang === 'ESP' ? "Automatización con IA" : "AI Automation",
+            desc: lang === 'ESP'
+                ? "Integración de modelos de IA avanzados para automatizar procesos manuales repetitivos, optimizando el tiempo y reduciendo errores operativos."
+                : "Integrating advanced AI models to automate tedious, repetitive tasks, freeing up human time and minimizing operational mistakes.",
+            tags: ["OpenAI API", "LangChain", "n8n / Zapier", "Agentic Flow"]
+        },
+        {
+            num: "09",
+            category: "Design",
+            title: lang === 'ESP' ? "Diseño UI/UX" : "UI/UX Design",
+            desc: lang === 'ESP'
+                ? "Investigación y maquetación visual centrada en el usuario. Creación de flujos de interacción, wireframes e interfaces de alta conversión."
+                : "User-centered design planning and prototyping. Designing user flows, interactive wireframes, and layouts optimized for conversion.",
+            tags: ["Figma", "UI Design", "Prototyping", "User Flows"]
+        },
+        {
+            num: "10",
+            category: "Maintenance",
+            title: lang === 'ESP' ? "Optimización de Software" : "Software Optimization",
+            desc: lang === 'ESP'
+                ? "Mejora del rendimiento general de tu software. Corrección de errores, optimización de velocidad de carga, auditoría SEO y actualización del stack tecnológico."
+                : "Tuning software performance and reliability. Fixing bugs, optimizing page speed, conducting SEO audits, and upgrading library stacks.",
+            tags: ["Core Web Vitals", "Debugging", "SEO Audit", "Refactoring"]
+        },
+        {
+            num: "11",
+            category: "Consulting",
+            title: lang === 'ESP' ? "Consultoría Tecnológica" : "Tech Consulting",
+            desc: lang === 'ESP'
+                ? "Asesoramiento técnico y estratégico. Definición del stack tecnológico óptimo, viabilidad de software y planeación de arquitectura escalable."
+                : "Strategic technical advisory. Defining the optimal technology stack, analyzing software feasibility, and planning scalable architectures.",
+            tags: ["Feasibility", "Tech Stack Decision", "Scale Plan"]
+        },
+        {
+            num: "12",
+            category: "DevOps",
+            title: lang === 'ESP' ? "Despliegue y Configuración" : "Project Deployment",
+            desc: lang === 'ESP'
+                ? "Puesta en producción segura de tus sistemas. Configuración de servidores en la nube, dominios, certificados SSL y flujos de integración continua (CI/CD)."
+                : "Safely launching systems to production. Setting up cloud servers, custom domains, SSL certificates, and continuous deployment workflows.",
+            tags: ["Vercel / Netlify", "AWS / Docker", "SSL / DNS", "CI / CD"]
         }
     ];
 
     const steps = [
-        { num: t('step1_num'), title: t('step1_title'), desc: t('step1_desc') },
-        { num: t('step2_num'), title: t('step2_title'), desc: t('step2_desc') },
-        { num: t('step3_num'), title: t('step3_title'), desc: t('step3_desc') },
-        { num: t('step4_num'), title: t('step4_title'), desc: t('step4_desc') }
+        {
+            num: "01",
+            title: lang === 'ESP' ? "Planificación Estratégica" : "Strategic Planning",
+            desc: lang === 'ESP'
+                ? "Definición conjunta del alcance, selección de tecnologías adecuadas y creación del mapa del sitio para asentar bases sólidas."
+                : "Collaboratively defining project scope, selecting the ideal tech stack, and mapping the site structure for a solid foundation."
+        },
+        {
+            num: "02",
+            title: lang === 'ESP' ? "Diseño UI/UX Interactivo" : "Interactive UI/UX Design",
+            desc: lang === 'ESP'
+                ? "Maquetación visual moderna orientada a la experiencia del usuario y conversión, creando prototipos interactivos en Figma."
+                : "Modern visual layouts geared towards user experience and conversion, creating high-fidelity interactive wireframes in Figma."
+        },
+        {
+            num: "03",
+            title: lang === 'ESP' ? "Desarrollo y Pruebas" : "Engineering & Testing",
+            desc: lang === 'ESP'
+                ? "Escritura de código limpio, modular y optimizado en SEO, aplicando pruebas de control de calidad y garantizando adaptabilidad en pantallas."
+                : "Writing clean, modular, and SEO-optimized code, conducting quality control tests, and ensuring responsiveness across all devices."
+        },
+        {
+            num: "04",
+            title: lang === 'ESP' ? "Despliegue y Monitoreo" : "Deployment & Launch",
+            desc: lang === 'ESP'
+                ? "Configuración de dominios, hosting, certificados de seguridad SSL y monitoreo inicial para un lanzamiento impecable a producción."
+                : "Configuring server hosting, custom domains, security SSL certificates, and initial telemetry logs for a flawless production launch."
+        }
+    ];
+
+    const trustItems = [
+        {
+            t: lang === 'ESP' ? "Ingeniería de Alta Precisión" : "High-Precision Engineering",
+            d: lang === 'ESP'
+                ? "Escribo código limpio, seguro y testeado siguiendo estándares modernos de la industria, garantizando una base escalable para tu producto."
+                : "I write clean, secure, and tested code following modern industry standards, ensuring a scalable foundation for your digital product."
+        },
+        {
+            t: lang === 'ESP' ? "Tecnología y Automatización con IA" : "Tech & AI Automation",
+            d: lang === 'ESP'
+                ? "Integro automatizaciones con inteligencia artificial y flujos autónomos para simplificar procesos y mantener tu negocio un paso adelante."
+                : "I integrate artificial intelligence automation and autonomous flows to simplify processes and keep your business one step ahead."
+        },
+        {
+            t: lang === 'ESP' ? "Enfoque en Negocio y Conversión" : "Business & Conversion Focus",
+            d: lang === 'ESP'
+                ? "No solo programo interfaces; diseño y desarrollo soluciones tecnológicas pensadas para mejorar tus métricas de conversión y optimizar costos."
+                : "I don't just build interfaces; I design and develop technological solutions engineered to drive conversions and optimize operational costs."
+        }
     ];
 
     return (
@@ -91,7 +225,52 @@ const ServicesPage: React.FC = () => {
                     </p>
                 </header>
 
+                {/* Typographic Interactive List of Services */}
+                <div className="w-full border-t border-white/10 mt-16 mb-40 flex flex-col">
+                    {services.map((service, index) => (
+                        <div
+                            key={index}
+                            className="service-row-item w-full border-b border-white/10 py-6 md:py-8 lg:py-10 flex flex-col group cursor-pointer hover:border-white transition-colors duration-500"
+                        >
+                            {/* Static view */}
+                            <div className="flex items-center justify-between gap-6 w-full">
+                                <div className="flex items-center">
+                                    <span className="mono text-xs opacity-30 tracking-widest">{service.num}</span>
+                                    <h3 className="heading text-xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tight ml-6 md:ml-10 text-white/50 group-hover:text-white group-hover:translate-x-2 transition-all duration-500">
+                                        {service.title}
+                                    </h3>
+                                </div>
+                                <div className="flex items-center gap-6">
+                                    <span className="hidden md:inline-block mono text-[9px] uppercase tracking-[0.2em] border border-white/10 px-3 py-1 rounded-full text-white/40 group-hover:text-white group-hover:border-white transition-all duration-500">
+                                        {service.category}
+                                    </span>
+                                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/10 group-hover:border-white flex items-center justify-center transition-colors duration-500">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5 text-white/40 group-hover:text-white transition-transform duration-500 group-hover:rotate-45">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
 
+                            {/* Hover Reveal content */}
+                            <div className="max-h-0 overflow-hidden group-hover:max-h-[300px] transition-all duration-700 ease-in-out pl-8 md:pl-16">
+                                <div className="pt-6 pb-2 flex flex-col lg:flex-row lg:items-start justify-between gap-6 lg:gap-12">
+                                    <p className="text-white/60 text-sm md:text-base leading-relaxed max-w-2xl font-medium">
+                                        {service.desc}
+                                    </p>
+                                    <div className="flex flex-wrap gap-2 lg:max-w-xs justify-start lg:justify-end">
+                                        {service.tags.map((tag, idx) => (
+                                            <span key={idx} className="mono text-[8px] md:text-[9px] uppercase tracking-widest bg-white/5 border border-white/10 px-3 py-1 rounded-full text-white/50 whitespace-nowrap">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
 
                 {/* Process Section */}
                 <section className="process-section mb-40 border-t border-white/5 pt-12">
@@ -125,14 +304,10 @@ const ServicesPage: React.FC = () => {
                     <div>
                         <span className="mono text-[10px] text-white/30 uppercase tracking-[0.4em] mb-8 block">{lang === 'ESP' ? 'Por qué elegirme' : 'Why Work With Me'}</span>
                         <h3 className="heading text-3xl md:text-5xl font-bold uppercase tracking-tighter mb-12 leading-none">
-                            {lang === 'ESP' ? "Sitios Web que Impulsan Negocios." : "Websites that Drive Business."}
+                            {lang === 'ESP' ? "Ingeniería Web Enfocada en Resultados." : "Web Engineering Focused on Results."}
                         </h3>
                         <div className="space-y-8">
-                            {[
-                                { t: lang === 'ESP' ? "Adaptabilidad Total" : "Total Adaptability", d: lang === 'ESP' ? "Desde tiendas locales hasta corporativos; soluciones web que se ajustan a la escala de tu empresa." : "From local shops to corporate entities; web solutions that fit your business scale." },
-                                { t: lang === 'ESP' ? "Enfoque en Conversión" : "Conversion Focused", d: lang === 'ESP' ? "Páginas diseñadas para convertir visitantes en clientes reales desde el primer día." : "Pages designed to turn visitors into real customers from day one." },
-                                { t: lang === 'ESP' ? "Tecnología de Vanguardia" : "Cutting-edge Tech", d: lang === 'ESP' ? "Sitios rápidos, seguros y optimizados para SEO que posicionan tu marca en lo más alto." : "Fast, secure, and SEO-optimized sites that position your brand at the top." }
-                            ].map((item, i) => (
+                            {trustItems.map((item, i) => (
                                 <div key={i} className="flex gap-6">
                                     <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0 shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
                                     <div>
@@ -187,7 +362,7 @@ const ServicesPage: React.FC = () => {
             <div className="fixed inset-0 z-[-1] pointer-events-none opacity-[0.02]">
                 <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:80px_80px]"></div>
             </div>
-        </div >
+        </div>
     );
 };
 
