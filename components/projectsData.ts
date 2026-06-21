@@ -1,6 +1,24 @@
 
 export const projects = [
     {
+        title: 'Data Corp',
+        category: 'Visit Web',
+        year: '2025',
+        img: '/datacorp.jpeg',
+        link: 'https://data-corp.vercel.app/',
+        accentColor: '#6366F1', // Indigo
+        glowColor: 'rgba(99, 102, 241, 0.6)',
+    },
+    {
+        title: 'Doctor Viajero',
+        category: 'Visit Web',
+        year: '2026',
+        img: '/doctorviajero.jpeg',
+        link: 'https://www.doctorviajero.com/',
+        accentColor: '#EF4444', // Red
+        glowColor: 'rgba(239, 68, 68, 0.6)',
+    },
+    {
         title: 'La Casa de Aurora',
         category: 'Visit Web',
         year: '2026',
