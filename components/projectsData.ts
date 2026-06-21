@@ -19,6 +19,15 @@ export const projects = [
         glowColor: 'rgba(239, 68, 68, 0.6)',
     },
     {
+        title: 'Elegidas por Amor',
+        category: 'Visit Web',
+        year: '2026',
+        img: '/elegidas.jpeg',
+        link: 'https://elegidas-por-amor.vercel.app/',
+        accentColor: '#EC4899', // Pink
+        glowColor: 'rgba(236, 72, 153, 0.6)',
+    },
+    {
         title: 'La Casa de Aurora',
         category: 'Visit Web',
         year: '2026',
