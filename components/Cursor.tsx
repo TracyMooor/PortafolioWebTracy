@@ -39,7 +39,7 @@ const Cursor: React.FC = () => {
 
     const onMouseEnter = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const isInteractive = target.closest('a, button, .interactive');
+      const isInteractive = target.closest('a:not(.no-cursor-hover), button:not(.no-cursor-hover), .interactive:not(.no-cursor-hover)');
       
       if (isInteractive) {
         gsap.to(follower, {
@@ -65,7 +65,7 @@ const Cursor: React.FC = () => {
     window.addEventListener('mousemove', onMouseMove);
     
     const refreshHandlers = () => {
-      document.querySelectorAll('a, button, .interactive').forEach(el => {
+      document.querySelectorAll('a:not(.no-cursor-hover), button:not(.no-cursor-hover), .interactive:not(.no-cursor-hover)').forEach(el => {
         el.addEventListener('mouseenter', onMouseEnter as any);
         el.addEventListener('mouseleave', onMouseLeave as any);
       });
