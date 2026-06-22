@@ -98,11 +98,11 @@ const About: React.FC = () => {
             <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 border-l border-white/10 pl-6 md:pl-8">
               <div>
                 <h4 className="mono text-[9px] uppercase opacity-40 mb-3 md:mb-4 tracking-widest">{t('mindset_label')}</h4>
-                <p className="text-white/60 text-base md:text-lg leading-relaxed">{t('mindset_text')}</p>
+                <p className="text-white/60 text-sm md:text-base leading-relaxed">{t('mindset_text')}</p>
               </div>
               <div>
                 <h4 className="mono text-[9px] uppercase opacity-40 mb-3 md:mb-4 tracking-widest">{t('goal_label')}</h4>
-                <p className="text-white/60 text-base md:text-lg leading-relaxed">{t('goal_text')}</p>
+                <p className="text-white/60 text-sm md:text-base leading-relaxed">{t('goal_text')}</p>
               </div>
             </div>
 
