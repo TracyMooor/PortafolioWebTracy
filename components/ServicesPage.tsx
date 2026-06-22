@@ -41,8 +41,11 @@ const ServicesPage: React.FC = () => {
                 opacity: 0,
                 duration: 1,
                 stagger: 0.05,
-                delay: 0.4,
-                ease: 'power3.out'
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.services-container',
+                    start: 'top 80%',
+                }
             });
 
             gsap.from('.process-step', {
@@ -245,8 +248,92 @@ const ServicesPage: React.FC = () => {
                     </p>
                 </header>
 
+                {/* FAQ/Trust Section */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-40">
+                    <div>
+                        <span className="mono text-[10px] text-white/30 uppercase tracking-[0.4em] mb-8 block">{lang === 'ESP' ? 'Por qué elegirme' : 'Why Work With Me'}</span>
+                        <h3 className="heading text-3xl md:text-5xl font-bold uppercase tracking-tighter mb-12 leading-none">
+                            {lang === 'ESP' ? "Ingeniería Web Enfocada en Resultados." : "Web Engineering Focused on Results."}
+                        </h3>
+                        <div className="space-y-8">
+                            {trustItems.map((item, i) => (
+                                <div key={i} className="flex gap-6">
+                                    <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0 shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+                                    <div>
+                                        <h5 className="heading text-xl font-bold uppercase tracking-tight mb-2 text-white">{item.t}</h5>
+                                        <p className="text-white/70 text-sm font-medium">{item.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="hidden lg:block relative aspect-square overflow-hidden rounded-sm bg-black border border-white/20 group/video">
+                        <video
+                            key={videoSrc}
+                            ref={videoRef}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover/video:opacity-100 transition-opacity duration-1000"
+                        >
+                            <source src={videoSrc} type="video/mp4" />
+                        </video>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                        <div className="absolute bottom-10 left-10 z-10">
+                        </div>
+
+                        {/* Custom Speaker Toggle Button in top-right corner */}
+                        <button
+                            onClick={toggleMute}
+                            className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-black/50 border border-white/10 hover:border-white flex items-center justify-center text-white/60 hover:text-white transition-all duration-300 interactive"
+                            aria-label={isMuted ? "Unmute video" : "Mute video"}
+                        >
+                            {isMuted ? (
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                                    <path d="M9 9v6a3 3 0 0 0 3 3h1.586l4.707 4.707A1 1 0 0 0 20 22V4a1 1 0 0 0-1.707-.707L13.586 8H12a3 3 0 0 0-3 3z"></path>
+                                </svg>
+                            ) : (
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                                </svg>
+                            )}
+                        </button>
+                    </div>
+                </div>
+
+                {/* Process Section */}
+                <section className="process-section mb-40 border-t border-white/5 pt-12">
+                    <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
+                        <h2 className="heading text-4xl md:text-6xl font-bold uppercase tracking-tighter max-w-md">
+                            {t('process_title')}
+                        </h2>
+                        <div className="max-w-md">
+                            <p className="mono text-[10px] text-white/30 uppercase tracking-[0.3em] leading-relaxed">
+                                {lang === 'ESP' ? "Un enfoque metodológico para garantizar resultados excepcionales en cada proyecto." : "A methodological approach to ensure exceptional results in every project."}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                        {steps.map((step, i) => (
+                            <div key={i} className="process-step group flex flex-col gap-6">
+                                <div className="flex items-center gap-6">
+                                    <span className="heading text-5xl md:text-6xl font-black text-white/20 group-hover:text-white transition-colors duration-700">{step.num}</span>
+                                    <div className="h-[2px] flex-grow bg-white/20 group-hover:bg-white transition-colors duration-700"></div>
+                                </div>
+                                <h4 className="heading text-xl md:text-2xl font-bold uppercase tracking-tight text-white">{step.title}</h4>
+                                <p className="text-white/70 text-sm leading-relaxed md:pr-4 font-medium">{step.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
                 {/* Typographic Interactive List of Services */}
-                <div className="w-full border-t border-white/10 mt-16 mb-40 flex flex-col">
+                <div className="services-container w-full border-t border-white/10 mt-16 mb-40 flex flex-col">
                     {services.map((service, index) => (
                         <div
                             key={index}
@@ -317,90 +404,6 @@ const ServicesPage: React.FC = () => {
                             aria-label={isMobileMuted ? "Unmute video" : "Mute video"}
                         >
                             {isMobileMuted ? (
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                                    <line x1="1" y1="1" x2="23" y2="23"></line>
-                                    <path d="M9 9v6a3 3 0 0 0 3 3h1.586l4.707 4.707A1 1 0 0 0 20 22V4a1 1 0 0 0-1.707-.707L13.586 8H12a3 3 0 0 0-3 3z"></path>
-                                </svg>
-                            ) : (
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-                                </svg>
-                            )}
-                        </button>
-                    </div>
-                </div>
-
-                {/* Process Section */}
-                <section className="process-section mb-40 border-t border-white/5 pt-12">
-                    <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
-                        <h2 className="heading text-4xl md:text-6xl font-bold uppercase tracking-tighter max-w-md">
-                            {t('process_title')}
-                        </h2>
-                        <div className="max-w-md">
-                            <p className="mono text-[10px] text-white/30 uppercase tracking-[0.3em] leading-relaxed">
-                                {lang === 'ESP' ? "Un enfoque metodológico para garantizar resultados excepcionales en cada proyecto." : "A methodological approach to ensure exceptional results in every project."}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                        {steps.map((step, i) => (
-                            <div key={i} className="process-step group flex flex-col gap-6">
-                                <div className="flex items-center gap-6">
-                                    <span className="heading text-5xl md:text-6xl font-black text-white/20 group-hover:text-white transition-colors duration-700">{step.num}</span>
-                                    <div className="h-[2px] flex-grow bg-white/20 group-hover:bg-white transition-colors duration-700"></div>
-                                </div>
-                                <h4 className="heading text-xl md:text-2xl font-bold uppercase tracking-tight text-white">{step.title}</h4>
-                                <p className="text-white/70 text-sm leading-relaxed md:pr-4 font-medium">{step.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-
-                {/* FAQ/Trust Section */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-40">
-                    <div>
-                        <span className="mono text-[10px] text-white/30 uppercase tracking-[0.4em] mb-8 block">{lang === 'ESP' ? 'Por qué elegirme' : 'Why Work With Me'}</span>
-                        <h3 className="heading text-3xl md:text-5xl font-bold uppercase tracking-tighter mb-12 leading-none">
-                            {lang === 'ESP' ? "Ingeniería Web Enfocada en Resultados." : "Web Engineering Focused on Results."}
-                        </h3>
-                        <div className="space-y-8">
-                            {trustItems.map((item, i) => (
-                                <div key={i} className="flex gap-6">
-                                    <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0 shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
-                                    <div>
-                                        <h5 className="heading text-xl font-bold uppercase tracking-tight mb-2 text-white">{item.t}</h5>
-                                        <p className="text-white/70 text-sm font-medium">{item.d}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="hidden lg:block relative aspect-square overflow-hidden rounded-sm bg-black border border-white/20 group/video">
-                        <video
-                            key={videoSrc}
-                            ref={videoRef}
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover/video:opacity-100 transition-opacity duration-1000"
-                        >
-                            <source src={videoSrc} type="video/mp4" />
-                        </video>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
-                        <div className="absolute bottom-10 left-10 z-10">
-                        </div>
-
-                        {/* Custom Speaker Toggle Button in top-right corner */}
-                        <button
-                            onClick={toggleMute}
-                            className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-black/50 border border-white/10 hover:border-white flex items-center justify-center text-white/60 hover:text-white transition-all duration-300 interactive"
-                            aria-label={isMuted ? "Unmute video" : "Mute video"}
-                        >
-                            {isMuted ? (
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
                                     <line x1="1" y1="1" x2="23" y2="23"></line>
                                     <path d="M9 9v6a3 3 0 0 0 3 3h1.586l4.707 4.707A1 1 0 0 0 20 22V4a1 1 0 0 0-1.707-.707L13.586 8H12a3 3 0 0 0-3 3z"></path>
