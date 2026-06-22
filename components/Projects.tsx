@@ -19,8 +19,11 @@ const Projects: React.FC = () => {
   const [isDragging, setIsDragging] = useState(false);
   const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
+  const startYRef = useRef(0);
   const startScrollYRef = useRef(0);
   const dragDistanceRef = useRef(0);
+  const isFirstMoveRef = useRef(true);
+  const isSwipeHorizontalRef = useRef(false);
 
   useEffect(() => {
     const section = horizontalRef.current;
@@ -126,8 +129,9 @@ const Projects: React.FC = () => {
     const minScroll = scrollTrigger.start;
     const maxScroll = scrollTrigger.end;
 
-    // Convert horizontal displacement into vertical scroll
-    let targetScrollY = startScrollYRef.current - deltaX;
+    // Convert horizontal displacement into vertical scroll with a multiplier to make it responsive
+    const multiplier = 2.5;
+    let targetScrollY = startScrollYRef.current - (deltaX * multiplier);
     targetScrollY = Math.max(minScroll, Math.min(maxScroll, targetScrollY));
 
     if (lenis) {
@@ -152,19 +156,52 @@ const Projects: React.FC = () => {
 
     const onTouchStart = (e: TouchEvent) => {
       if (e.touches.length > 0) {
-        handleDragStart(e.touches[0].clientX);
+        startXRef.current = e.touches[0].clientX;
+        startYRef.current = e.touches[0].clientY;
+        startScrollYRef.current = window.scrollY;
+        isFirstMoveRef.current = true;
+        isSwipeHorizontalRef.current = false;
+        dragDistanceRef.current = 0;
       }
     };
 
     const onTouchMove = (e: TouchEvent) => {
-      if (isDraggingRef.current && e.touches.length > 0) {
-        e.preventDefault(); // Prevents browser scroll to enable drag-to-slide
-        handleDragMove(e.touches[0].clientX);
+      if (e.touches.length === 0) return;
+
+      const clientX = e.touches[0].clientX;
+      const clientY = e.touches[0].clientY;
+
+      if (isFirstMoveRef.current) {
+        const deltaX = clientX - startXRef.current;
+        const deltaY = clientY - startYRef.current;
+
+        // If movement is horizontal, take control of the drag
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 5) {
+          isSwipeHorizontalRef.current = true;
+          isDraggingRef.current = true;
+          setIsDragging(true);
+        } else {
+          isSwipeHorizontalRef.current = false;
+          isDraggingRef.current = false;
+        }
+        isFirstMoveRef.current = false;
+      }
+
+      if (isSwipeHorizontalRef.current) {
+        // Prevent default browser scrolling only for horizontal swipes
+        if (e.cancelable) {
+          e.preventDefault();
+        }
+        handleDragMove(clientX);
       }
     };
 
     const onTouchEnd = () => {
-      handleDragEnd();
+      if (isSwipeHorizontalRef.current) {
+        handleDragEnd();
+      }
+      isDraggingRef.current = false;
+      setIsDragging(false);
     };
 
     container.addEventListener('touchstart', onTouchStart, { passive: true });
