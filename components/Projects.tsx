@@ -1,22 +1,32 @@
-
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLang } from './LanguageContext';
 import { projects } from './projectsData';
+import { useSmoothScroll } from './SmoothScroll';
 
 const Projects: React.FC = () => {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const lenis = useSmoothScroll();
   const triggerRef = useRef<HTMLDivElement>(null);
   const horizontalRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeIndexRef = useRef(0);
+
+  // Drag state and references for custom horizontal dragging
+  const [isDragging, setIsDragging] = useState(false);
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const startScrollYRef = useRef(0);
+  const dragDistanceRef = useRef(0);
 
   useEffect(() => {
     const section = horizontalRef.current;
     if (!section) return;
 
     const ctx = gsap.context(() => {
-      // We only apply pinning and horizontal scroll if screen is reasonably wide
-      // or if we want to keep it consistent, we ensure it's tight.
       const totalWidth = section.scrollWidth - window.innerWidth;
 
       gsap.to(section, {
@@ -28,7 +38,33 @@ const Projects: React.FC = () => {
           scrub: 1,
           start: 'top top',
           end: () => `+=${totalWidth}`,
-          invalidateOnRefresh: true
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            // Find which project is currently active (closest to left margin)
+            const currentX = self.progress * totalWidth;
+            const items = section.querySelectorAll('.project-item');
+            if (items.length > 0) {
+              const firstItem = items[0] as HTMLElement;
+              const firstOffset = firstItem.offsetLeft;
+              let newIndex = 0;
+              let minDiff = Infinity;
+
+              items.forEach((itemNode, idx) => {
+                const item = itemNode as HTMLElement;
+                const itemX = item.offsetLeft - firstOffset;
+                const diff = Math.abs(itemX - currentX);
+                if (diff < minDiff) {
+                  minDiff = diff;
+                  newIndex = idx;
+                }
+              });
+
+              if (newIndex !== activeIndexRef.current) {
+                activeIndexRef.current = newIndex;
+                setActiveIndex(newIndex);
+              }
+            }
+          }
         }
       });
 
@@ -66,24 +102,208 @@ const Projects: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
+  // Drag interaction logic
+  const handleDragStart = (clientX: number) => {
+    const scrollTrigger = ScrollTrigger.getAll().find(st => st.trigger === triggerRef.current);
+    if (!scrollTrigger) return;
+
+    isDraggingRef.current = true;
+    setIsDragging(true);
+    startXRef.current = clientX;
+    startScrollYRef.current = window.scrollY;
+    dragDistanceRef.current = 0;
+  };
+
+  const handleDragMove = (clientX: number) => {
+    if (!isDraggingRef.current) return;
+
+    const scrollTrigger = ScrollTrigger.getAll().find(st => st.trigger === triggerRef.current);
+    if (!scrollTrigger) return;
+
+    const deltaX = clientX - startXRef.current;
+    dragDistanceRef.current = Math.abs(deltaX);
+
+    const minScroll = scrollTrigger.start;
+    const maxScroll = scrollTrigger.end;
+
+    // Convert horizontal displacement into vertical scroll
+    let targetScrollY = startScrollYRef.current - deltaX;
+    targetScrollY = Math.max(minScroll, Math.min(maxScroll, targetScrollY));
+
+    if (lenis) {
+      lenis.scrollTo(targetScrollY, { immediate: true });
+    } else {
+      window.scrollTo(0, targetScrollY);
+    }
+  };
+
+  const handleDragEnd = () => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    setTimeout(() => {
+      setIsDragging(false);
+    }, 50);
+  };
+
+  // Listen to touch gestures with passive option configuration to allow e.preventDefault()
+  useEffect(() => {
+    const container = horizontalRef.current;
+    if (!container) return;
+
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        handleDragStart(e.touches[0].clientX);
+      }
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (isDraggingRef.current && e.touches.length > 0) {
+        e.preventDefault(); // Prevents browser scroll to enable drag-to-slide
+        handleDragMove(e.touches[0].clientX);
+      }
+    };
+
+    const onTouchEnd = () => {
+      handleDragEnd();
+    };
+
+    container.addEventListener('touchstart', onTouchStart, { passive: true });
+    container.addEventListener('touchmove', onTouchMove, { passive: false });
+    container.addEventListener('touchend', onTouchEnd, { passive: true });
+
+    return () => {
+      container.removeEventListener('touchstart', onTouchStart);
+      container.removeEventListener('touchmove', onTouchMove);
+      container.removeEventListener('touchend', onTouchEnd);
+    };
+  }, [lenis]);
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    if (e.button !== 0) return; // Only left click
+    handleDragStart(e.clientX);
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    handleDragMove(e.clientX);
+  };
+
+  const onMouseUpOrLeave = () => {
+    handleDragEnd();
+  };
+
+  const handleLinkClick = (e: React.MouseEvent) => {
+    // If the user was dragging, prevent navigation
+    if (dragDistanceRef.current > 15) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+
+  const scrollToProject = (index: number) => {
+    const container = horizontalRef.current;
+    if (!container) return;
+    const items = container.querySelectorAll('.project-item');
+    if (index < 0 || index >= items.length) return;
+
+    const item = items[index] as HTMLElement;
+    const firstItem = items[0] as HTMLElement;
+    const scrollTrigger = ScrollTrigger.getAll().find(st => st.trigger === triggerRef.current);
+    if (!scrollTrigger) return;
+
+    const x = item.offsetLeft - firstItem.offsetLeft;
+    const totalWidth = container.scrollWidth - window.innerWidth;
+    const clampedX = Math.min(x, totalWidth);
+    const targetScroll = scrollTrigger.start + clampedX;
+
+    if (lenis) {
+      lenis.scrollTo(targetScroll, { duration: 1.2 });
+    } else {
+      window.scrollTo({
+        top: targetScroll,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handlePrev = () => {
+    if (activeIndex > 0) {
+      scrollToProject(activeIndex - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (activeIndex < projects.length - 1) {
+      scrollToProject(activeIndex + 1);
+    }
+  };
+
   return (
-    <section id="projects" ref={triggerRef} className="relative bg-[#050505] overflow-hidden min-h-screen flex flex-col justify-start">
+    <section id="projects" ref={triggerRef} className="relative bg-[#050505] overflow-hidden min-h-screen flex flex-col justify-start select-none">
       {/* Reduced padding on mobile (pt-20 vs pt-32) to bring content higher */}
       <div ref={headerRef} className="w-full px-6 md:px-24 pt-20 md:pt-32 pb-8 md:pb-16 z-20">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-12 border-b border-white/5 pb-8 md:pb-16">
-          <div className="flex flex-col gap-2 md:gap-4">
+          <div className="flex flex-col gap-3 md:gap-5">
             <span className="mono text-[9px] md:text-[10px] uppercase text-white/40 tracking-[0.4em]">02 — {t('selectedWorks')}</span>
+            
+            {/* Slide Navigation Controls */}
+            <div className="flex items-center gap-6 mt-1">
+              <div className="mono text-[11px] text-white/60 tracking-wider">
+                <span className="text-white font-bold">{String(activeIndex + 1).padStart(2, '0')}</span>
+                <span className="text-white/20"> / </span>
+                <span>{String(projects.length).padStart(2, '0')}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handlePrev}
+                  disabled={activeIndex === 0}
+                  className={`flex items-center justify-center w-8 h-8 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 ${
+                    activeIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'hover:border-white hover:bg-white text-white hover:text-black active:scale-95'
+                  }`}
+                  aria-label="Previous Project"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={handleNext}
+                  disabled={activeIndex === projects.length - 1}
+                  className={`flex items-center justify-center w-8 h-8 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 ${
+                    activeIndex === projects.length - 1 ? 'opacity-30 cursor-not-allowed' : 'hover:border-white hover:bg-white text-white hover:text-black active:scale-95'
+                  }`}
+                  aria-label="Next Project"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
           <div className="max-w-md">
             <p className="text-white/30 text-[9px] md:text-xs mono leading-relaxed uppercase tracking-widest text-left md:text-right">
               {t('project_desc')}
             </p>
+            <p className="text-white/15 text-[8px] md:text-[9px] mono uppercase tracking-wider mt-2.5 text-left md:text-right hidden sm:block">
+              {lang === 'ESP'
+                ? 'Arrastra horizontalmente o usa las flechas para explorar'
+                : 'Drag horizontally or use arrows to explore'}
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Optimized spacing for desktop to ensure vertical visibility */}
-      <div ref={horizontalRef} className="flex h-[60vh] md:h-fit items-start px-6 md:px-24 pt-10 md:-mt-24 gap-12 md:gap-32 lg:gap-40 relative">
+      {/* Optimized spacing for desktop to ensure vertical visibility, with internal bottom padding */}
+      <div
+        ref={horizontalRef}
+        className={`flex h-[60vh] md:h-fit items-start px-6 md:px-24 pt-10 md:-mt-24 pb-16 md:pb-28 gap-12 md:gap-32 lg:gap-40 relative select-none ${
+          isDragging ? 'cursor-grabbing' : 'cursor-grab'
+        }`}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUpOrLeave}
+        onMouseLeave={onMouseUpOrLeave}
+      >
         {projects.map((project, index) => (
           <div key={index} className="project-item flex-shrink-0 w-[85vw] md:w-[45vw] lg:w-[30vw] group flex flex-col pt-0">
             {project.link ? (
@@ -91,6 +311,8 @@ const Projects: React.FC = () => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleLinkClick}
+                draggable="false"
                 className="relative overflow-hidden aspect-video bg-zinc-900 shadow-2xl rounded-sm block cursor-pointer group/img"
               >
                 <div className="absolute top-8 right-8 z-30 pointer-events-none animate-mouse-click-expert">
@@ -184,6 +406,7 @@ const Projects: React.FC = () => {
                 <img
                   src={project.img}
                   alt={project.title}
+                  draggable="false"
                   className="w-full h-full object-cover transition-transform duration-[2.5s] cubic-bezier(0.19, 1, 0.22, 1) group-hover/img:scale-105 animate-image-impact"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-50 group-hover/img:opacity-30 transition-opacity duration-700" />
@@ -198,6 +421,7 @@ const Projects: React.FC = () => {
                 <img
                   src={project.img}
                   alt={project.title}
+                  draggable="false"
                   className="w-full h-full object-cover transition-transform duration-[2.5s] cubic-bezier(0.19, 1, 0.22, 1)"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-50" />
@@ -223,6 +447,7 @@ const Projects: React.FC = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={handleLinkClick}
                       className="group/link inline-flex items-center gap-3 md:gap-4"
                     >
                       <div className="flex items-center justify-center w-6 h-6 md:w-10 md:h-10 rounded-full border border-white/20 group-hover/link:border-white group-hover/link:bg-white transition-all duration-500 animate-bounce-gentle">
