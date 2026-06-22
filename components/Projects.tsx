@@ -252,7 +252,7 @@ const Projects: React.FC = () => {
                 <span className="text-white/20"> / </span>
                 <span>{String(projects.length).padStart(2, '0')}</span>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="hidden md:flex items-center gap-3">
                 <button
                   onClick={handlePrev}
                   disabled={activeIndex === 0}
