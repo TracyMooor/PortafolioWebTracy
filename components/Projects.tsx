@@ -247,7 +247,7 @@ const Projects: React.FC = () => {
             
             {/* Slide Navigation Controls */}
             <div className="flex items-center gap-6 mt-1">
-              <div className="mono text-[11px] text-white/60 tracking-wider">
+              <div className="hidden md:block mono text-[11px] text-white/60 tracking-wider">
                 <span className="text-white font-bold">{String(activeIndex + 1).padStart(2, '0')}</span>
                 <span className="text-white/20"> / </span>
                 <span>{String(projects.length).padStart(2, '0')}</span>
