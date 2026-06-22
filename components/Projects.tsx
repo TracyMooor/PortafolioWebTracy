@@ -216,15 +216,18 @@ const Projects: React.FC = () => {
   }, [lenis]);
 
   const onMouseDown = (e: React.MouseEvent) => {
+    if (window.innerWidth >= 1024) return; // Disable mouse dragging on desktop
     if (e.button !== 0) return; // Only left click
     handleDragStart(e.clientX);
   };
 
   const onMouseMove = (e: React.MouseEvent) => {
+    if (window.innerWidth >= 1024) return; // Disable mouse dragging on desktop
     handleDragMove(e.clientX);
   };
 
   const onMouseUpOrLeave = () => {
+    if (window.innerWidth >= 1024) return; // Disable mouse dragging on desktop
     handleDragEnd();
   };
 
@@ -323,8 +326,8 @@ const Projects: React.FC = () => {
             </p>
             <p className="text-white/15 text-[8px] md:text-[9px] mono uppercase tracking-wider mt-2.5 text-left md:text-right hidden sm:block">
               {lang === 'ESP'
-                ? 'Arrastra horizontalmente o usa las flechas para explorar'
-                : 'Drag horizontally or use arrows to explore'}
+                ? 'Usa el scroll o las flechas para explorar'
+                : 'Use scroll or arrows to explore'}
             </p>
           </div>
         </div>
@@ -333,7 +336,7 @@ const Projects: React.FC = () => {
       {/* Optimized spacing for desktop to ensure vertical visibility, with internal bottom padding */}
       <div
         ref={horizontalRef}
-        className={`flex h-[60vh] md:h-fit items-start px-6 md:px-24 pt-10 md:-mt-24 pb-16 md:pb-28 gap-12 md:gap-32 lg:gap-40 relative select-none ${
+        className={`flex h-[60vh] md:h-fit items-start px-6 md:px-24 pt-10 md:-mt-24 pb-16 md:pb-28 gap-12 md:gap-32 lg:gap-40 relative select-none lg:cursor-default ${
           isDragging ? 'cursor-grabbing' : 'cursor-grab'
         }`}
         onMouseDown={onMouseDown}
