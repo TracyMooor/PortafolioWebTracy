@@ -18,9 +18,25 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const App: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isFirstLoad] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return !sessionStorage.getItem('hasLoadedBefore');
+    }
+    return true;
+  });
+
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return !sessionStorage.getItem('hasLoadedBefore');
+    }
+    return true;
+  });
 
   useEffect(() => {
+    if (!isFirstLoad) {
+      gsap.set('body', { opacity: 1 });
+      return;
+    }
     if (!isLoading) {
       gsap.to('body', {
         opacity: 1,
@@ -30,14 +46,21 @@ const App: React.FC = () => {
     } else {
       gsap.set('body', { opacity: 1 });
     }
-  }, [isLoading]);
+  }, [isLoading, isFirstLoad]);
 
   return (
     <Router>
       <ScrollToTop />
       <LanguageProvider>
         <SmoothScrollProvider>
-          {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+          {isLoading && (
+            <Preloader
+              onComplete={() => {
+                sessionStorage.setItem('hasLoadedBefore', 'true');
+                setIsLoading(false);
+              }}
+            />
+          )}
 
           <div className={`relative min-h-screen selection:bg-white selection:text-black bg-[#050505] text-[#f5f5f5] ${isLoading ? 'h-screen overflow-hidden' : ''}`}>
             {!isLoading && (
@@ -50,7 +73,7 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={
                 <>
-                  <Home isLoading={isLoading} />
+                  <Home isLoading={isLoading} isFirstLoad={isFirstLoad} />
                   {/* Subtle grid background */}
                   <div className="fixed inset-0 z-[-1] pointer-events-none opacity-[0.02]">
                     <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:80px_80px]"></div>

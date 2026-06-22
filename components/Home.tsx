@@ -8,12 +8,13 @@ import Contact from './Contact';
 
 interface HomeProps {
     isLoading: boolean;
+    isFirstLoad: boolean;
 }
 
-const Home: React.FC<HomeProps> = ({ isLoading }) => {
+const Home: React.FC<HomeProps> = ({ isLoading, isFirstLoad }) => {
     return (
         <main>
-            <Hero active={!isLoading} />
+            <Hero active={!isLoading} isFirstLoad={isFirstLoad} />
             <About />
             <TechStack />
             <Projects />

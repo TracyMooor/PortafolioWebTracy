@@ -5,9 +5,10 @@ import { useLang } from './LanguageContext';
 
 interface HeroProps {
   active?: boolean;
+  isFirstLoad?: boolean;
 }
 
-const Hero: React.FC<HeroProps> = ({ active }) => {
+const Hero: React.FC<HeroProps> = ({ active, isFirstLoad }) => {
   const { t } = useLang();
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -18,23 +19,31 @@ const Hero: React.FC<HeroProps> = ({ active }) => {
     if (!active) return;
 
     const chars = titleRef.current?.querySelectorAll('.char');
-    const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
 
-    tl.set(containerRef.current, { opacity: 1 })
-      .fromTo(spineRef.current,
-        { scaleY: 0 },
-        { scaleY: 1, duration: 2, transformOrigin: 'top', ease: 'power4.inOut' }
-      )
-      .fromTo(chars,
-        { y: 150, opacity: 0, rotateX: -90 },
-        { y: 0, opacity: 1, rotateX: 0, stagger: 0.02, duration: 1.8 },
-        "-=1.5"
-      )
-      .fromTo(metaRefs.current,
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.1, duration: 1.2 },
-        "-=1"
-      );
+    if (!isFirstLoad) {
+      gsap.set(containerRef.current, { opacity: 1 });
+      gsap.set(spineRef.current, { scaleY: 1 });
+      gsap.set(chars, { y: 0, opacity: 1, rotateX: 0 });
+      gsap.set(metaRefs.current, { y: 0, opacity: 1 });
+    } else {
+      const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+
+      tl.set(containerRef.current, { opacity: 1 })
+        .fromTo(spineRef.current,
+          { scaleY: 0 },
+          { scaleY: 1, duration: 2, transformOrigin: 'top', ease: 'power4.inOut' }
+        )
+        .fromTo(chars,
+          { y: 150, opacity: 0, rotateX: -90 },
+          { y: 0, opacity: 1, rotateX: 0, stagger: 0.02, duration: 1.8 },
+          "-=1.5"
+        )
+        .fromTo(metaRefs.current,
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.1, duration: 1.2 },
+          "-=1"
+        );
+    }
 
     const handleMouseMove = (e: MouseEvent) => {
       if (window.innerWidth < 1024) return;
