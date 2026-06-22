@@ -12,6 +12,7 @@ import ServicesPage from './components/ServicesPage';
 import ContactPage from './components/ContactPage';
 import Preloader from './components/Preloader';
 import ScrollToTop from './components/ScrollToTop';
+import WhatsAppButton from './components/WhatsAppButton';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -67,6 +68,7 @@ const App: React.FC = () => {
               <>
                 <Cursor />
                 <Navbar />
+                <WhatsAppButton />
               </>
             )}
 
