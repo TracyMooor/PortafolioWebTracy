@@ -51,7 +51,7 @@ const ContactPage: React.FC = () => {
         };
     }, []);
 
-    const SocialLink = ({ href, label, value }: { href: string, label: string, value: string }) => (
+    const SocialLink = ({ href, label, value, textSize }: { href: string, label: string, value: string, textSize: string }) => (
         <a
             href={href}
             target="_blank"
@@ -59,11 +59,11 @@ const ContactPage: React.FC = () => {
             className="contact-item group flex flex-col py-8 border-b border-white/10 hover:border-white transition-colors duration-500"
         >
             <span className="mono text-[10px] uppercase text-white/40 mb-2 tracking-[0.4em]">{label}</span>
-            <div className="flex justify-between items-center">
-                <span className="heading text-xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tighter group-hover:translate-x-4 transition-transform duration-500 italic group-hover:not-italic">
+            <div className="flex justify-between items-center gap-4">
+                <span className={`heading font-bold tracking-tighter group-hover:translate-x-4 transition-transform duration-500 italic group-hover:not-italic ${textSize}`}>
                     {value}
                 </span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 md:w-12 md:h-12 opacity-0 group-hover:opacity-100 transition-all duration-500 rotate-[-45deg] group-hover:rotate-0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 md:w-12 md:h-12 opacity-0 group-hover:opacity-100 transition-all duration-500 rotate-[-45deg] group-hover:rotate-0 flex-shrink-0">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
                     <polyline points="7 7 17 7 17 17"></polyline>
                 </svg>
@@ -100,17 +100,20 @@ const ContactPage: React.FC = () => {
                             <SocialLink
                                 href="https://mail.google.com/mail/?view=cm&fs=1&to=tracynicolehmorianotuanama@gmail.com"
                                 label={t('email')}
-                                value="Tracy@gmail.com"
+                                value="tracynicolehmorianotuanama@gmail.com"
+                                textSize="text-[11px] xs:text-sm sm:text-lg md:text-xl lg:text-2xl break-all"
                             />
                             <SocialLink
                                 href="https://www.linkedin.com/in/tracymooor/"
                                 label={t('linkedin')}
                                 value="Tracy Moriano"
+                                textSize="text-lg md:text-2xl lg:text-3xl"
                             />
                             <SocialLink
                                 href="https://github.com/TracyMooor"
                                 label={t('github')}
                                 value="TracyMooor"
+                                textSize="text-lg md:text-2xl lg:text-3xl"
                             />
                             <SocialLink
                                 href={lang === 'ESP'
@@ -118,6 +121,7 @@ const ContactPage: React.FC = () => {
                                     : "https://wa.me/51906936891?text=Hi%20Tracy,%20I%20just%20saw%20your%20portfolio%20and%20I'm%20interested%20in%20your%20work.%20Can%20we%20schedule%20a%20meeting%20to%20talk%20about%20a%20project%3F"}
                                 label="WhatsApp"
                                 value="+51 906 936 891"
+                                textSize="text-xl md:text-3xl lg:text-4xl"
                             />
                         </div>
                     </div>
