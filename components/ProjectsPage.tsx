@@ -53,7 +53,7 @@ const ProjectsPage: React.FC = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black">
-            <main className="pt-32 pb-20 px-6 md:px-12 lg:px-24">
+            <main className="pt-32 pb-20 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 max-w-[1700px] mx-auto">
                 <header className="mb-20">
                     <Link to="/" className="inline-flex md:hidden items-center gap-2 mono text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-white transition-colors mb-8 group">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 transition-transform group-hover:-translate-x-1">
@@ -89,50 +89,48 @@ const ProjectsPage: React.FC = () => {
                     ))}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
                     {filteredProjects.map((project) => (
-                        <div key={project.title} className="project-card group">
+                        <div key={project.title} className="project-card group relative overflow-hidden rounded-2xl aspect-[3/4] bg-zinc-900 border border-white/5 hover:border-white/20 transition-all duration-500 shadow-2xl">
                             <a
                                 href={project.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="block relative aspect-video overflow-hidden rounded-sm bg-zinc-900 mb-6"
+                                className="block w-full h-full relative"
                             >
                                 <img
                                     src={project.img}
                                     alt={project.title}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+                                
+                                {/* Top-right Year Tag */}
+                                <div className="absolute top-5 right-5 z-20 px-3 py-1 bg-black/50 backdrop-blur-md rounded-full border border-white/10 text-white/60 mono text-[9px] uppercase tracking-widest">
+                                    {project.year}
+                                </div>
 
-                                {/* Accent Glow */}
+                                {/* Gradient Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity duration-500 z-10" />
+
+                                {/* Accent Glow on Hover */}
                                 <div
-                                    className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none"
-                                    style={{ background: `radial-gradient(circle at center, ${project.accentColor}, transparent)` }}
+                                    className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none z-10"
+                                    style={{ background: `radial-gradient(circle at bottom left, ${project.accentColor}, transparent)` }}
                                 />
-                            </a>
 
-                            <div className="flex justify-between items-end border-b border-white/5 pb-6">
-                                <div>
-                                    <div className="flex items-center gap-3 mb-2">
-                                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: project.accentColor }}></span>
-                                        <span className="mono text-[10px] uppercase text-white/40 tracking-[0.3em]">
-                                            {project.category === 'Visit Web' ? t('visitWeb') : t(project.category)}
-                                        </span>
-                                    </div>
-                                    <h3 className="heading text-2xl md:text-3xl font-bold uppercase tracking-tight">
+                                {/* Bottom Info Overlay */}
+                                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex flex-col justify-end z-20">
+                                    <h3 className="heading text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight mb-2 group-hover:translate-x-1 transition-transform duration-500">
                                         {project.title}
                                     </h3>
+                                    <div className="flex items-center gap-3">
+                                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: project.accentColor }}></span>
+                                        <span className="mono text-[10px] uppercase text-white/50 tracking-[0.2em]">
+                                            {t(project.category)}
+                                        </span>
+                                    </div>
                                 </div>
-                                <div className="text-right">
-                                    <span className="mono text-[10px] uppercase text-white/40 tracking-[0.3em] block mb-2">
-                                        {t('year_label')}
-                                    </span>
-                                    <span className="heading text-xl md:text-2xl font-bold">
-                                        {project.year}
-                                    </span>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     ))}
                 </div>
