@@ -478,7 +478,7 @@ const Projects: React.FC = () => {
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-white/30 rounded-full"></span>
                   <span className="mono text-[10px] md:text-xs uppercase text-white/40 tracking-[0.5em] font-medium">
-                    {t('category_label')}
+                    {project.title}
                   </span>
                 </div>
                 <h4 className="heading text-xl md:text-2xl lg:text-3xl tracking-tighter font-bold text-white leading-[0.9]">
