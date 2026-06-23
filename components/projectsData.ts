@@ -4,7 +4,7 @@ export const projects = [
         title: 'Data Corp',
         category: 'web_corporativa',
         year: '2025',
-        img: '/datacorp.jpeg',
+        img: '/datacorp.png',
         link: 'https://data-corp.vercel.app/',
         accentColor: '#6366F1', // Indigo
         glowColor: 'rgba(99, 102, 241, 0.6)',
@@ -22,7 +22,7 @@ export const projects = [
         title: 'Elegidas por Amor',
         category: 'web_ecommerce',
         year: '2026',
-        img: '/elegidas.jpeg',
+        img: '/elegidas.png',
         link: 'https://elegidas-por-amor.vercel.app/',
         accentColor: '#EC4899', // Pink
         glowColor: 'rgba(236, 72, 153, 0.6)',
@@ -31,7 +31,7 @@ export const projects = [
         title: 'La Casa de Aurora',
         category: 'catalogo_digital',
         year: '2026',
-        img: '/lacasa.jpg',
+        img: '/lacasa.png',
         link: 'https://lacasadeaurora.vercel.app/',
         accentColor: '#A855F7', // Purple
         glowColor: 'rgba(168, 85, 247, 0.6)',
@@ -40,7 +40,7 @@ export const projects = [
         title: 'LOS SABORES DE OAXACA',
         category: 'web_ecommerce',
         year: '2026',
-        img: '/lossabores.jpeg',
+        img: '/lossabores.png',
         link: 'https://lossaboresdeoaxaca.vercel.app/',
         accentColor: '#10B981', // Green
         glowColor: 'rgba(16, 185, 129, 0.6)',
@@ -49,7 +49,7 @@ export const projects = [
         title: 'KAIRO',
         category: 'catalogo_digital',
         year: '2026',
-        img: '/kairo.jpeg',
+        img: '/kairo.png',
         link: 'https://kairo-pi-lime.vercel.app/',
         accentColor: '#F59E0B', // Amber/Gold
         glowColor: 'rgba(245, 158, 11, 0.6)',
@@ -58,7 +58,7 @@ export const projects = [
         title: 'VIVANTA FARMA',
         category: 'web_corporativa',
         year: '2026',
-        img: '/vivantafarma.jpeg',
+        img: '/vivantafarma.png',
         link: 'https://vivantafarma.vercel.app/',
         accentColor: '#0EA5E9', // Sky Blue
         glowColor: 'rgba(14, 165, 233, 0.6)',
