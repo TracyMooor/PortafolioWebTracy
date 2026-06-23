@@ -72,7 +72,7 @@ const ProjectsPage: React.FC = () => {
                 </header>
 
                 {/* Premium Categories Filter Bar */}
-                <div className="flex flex-wrap items-center gap-x-8 gap-y-4 border-b border-white/10 pb-8 mb-16">
+                <div className="hidden md:flex flex-wrap items-center gap-x-8 gap-y-4 border-b border-white/10 pb-8 mb-16">
                     {['all_projects', 'web_corporativa', 'web_ecommerce', 'landing_page', 'catalogo_digital'].map((filter) => (
                         <button
                             key={filter}
@@ -89,7 +89,7 @@ const ProjectsPage: React.FC = () => {
                     ))}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-10">
                     {filteredProjects.map((project) => (
                         <div key={project.title} className="project-card group relative overflow-hidden rounded-2xl aspect-[3/4] bg-zinc-900 border border-white/5 hover:border-white/20 transition-all duration-500 shadow-2xl">
                             <a
