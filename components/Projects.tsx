@@ -355,92 +355,20 @@ const Projects: React.FC = () => {
                 draggable="false"
                 className="relative overflow-hidden aspect-video bg-zinc-900 shadow-2xl rounded-sm block cursor-pointer group/img"
               >
-                <div className="absolute top-8 right-8 z-30 pointer-events-none animate-mouse-click-expert">
-                  <div className="relative">
-                    {/* Synchronized Expert Ripple */}
-                    <div
-                      className="absolute inset-0 w-24 h-24 -translate-x-1/2 -translate-y-1/2 border-2 rounded-full animate-ripple-expert pointer-events-none"
-                      style={{ borderColor: project.glowColor }}
-                    />
-
-                    {/* Expert Impact Flare */}
-                    <div className="absolute inset-0 w-32 h-32 -translate-x-1/2 -translate-y-1/2 bg-white/20 blur-xl rounded-full scale-0 animate-impact-flare pointer-events-none" />
-                    <div className="absolute inset-0 w-16 h-16 -translate-x-1/2 -translate-y-1/2 bg-white blur-md rounded-full scale-0 animate-impact-flare pointer-events-none" />
-
-                    {/* DESKTOP INDICATOR: Dynamic Color Arrow */}
-                    <div className="hidden md:block animate-neon-flicker">
-                      {/* Soft Ambient Glow base */}
-                      <div
-                        className="absolute inset-0 blur-xl rounded-full scale-125 opacity-20"
-                        style={{ backgroundColor: project.accentColor }}
-                      />
-                      <svg
-                        width="38"
-                        height="38"
-                        viewBox="0 0 24 24"
-                        className="transform rotate-[-95deg]"
-                        style={{ filter: `drop-shadow(0 0 8px ${project.glowColor})` }}
-                      >
-                        {/* Outer Body Glow Path */}
-                        <path
-                          d="M5.5 3.21V20.8L10.07 16.23L13.12 22.5L16.22 21L13.17 14.73L18.79 14.73L5.5 3.21Z"
-                          fill={project.accentColor}
-                          opacity="0.3"
-                        />
-                        {/* Main Body Path */}
-                        <path
-                          d="M5.5 3.21V20.8L10.07 16.23L13.12 22.5L16.22 21L13.17 14.73L18.79 14.73L5.5 3.21Z"
-                          fill="#121212"
-                          stroke="white"
-                          strokeWidth="1.2"
-                          strokeLinejoin="round"
-                        />
-                        {/* High-Brightness Core */}
-                        <path
-                          d="M7.5 5.5V17L10.5 14L14 21L15 20.5L11.5 13.5L16.5 13.5L7.5 5.5Z"
-                          fill="white"
-                          opacity="0.3"
-                        />
-                      </svg>
-                    </div>
-
-                    {/* MOBILE INDICATOR: Dynamic Color Arrow (Unified) */}
-                    <div className="block md:hidden animate-neon-flicker">
-                      {/* Soft Ambient Glow base */}
-                      <div
-                        className="absolute inset-0 blur-xl rounded-full scale-125 opacity-20"
-                        style={{ backgroundColor: project.accentColor }}
-                      />
-                      <svg
-                        width="38"
-                        height="38"
-                        viewBox="0 0 24 24"
-                        className="transform rotate-[-135deg]"
-                        style={{ filter: `drop-shadow(0 0 8px ${project.glowColor})` }}
-                      >
-                        {/* Outer Body Glow Path */}
-                        <path
-                          d="M5.5 3.21V20.8L10.07 16.23L13.12 22.5L16.22 21L13.17 14.73L18.79 14.73L5.5 3.21Z"
-                          fill={project.accentColor}
-                          opacity="0.3"
-                        />
-                        {/* Main Body Path */}
-                        <path
-                          d="M5.5 3.21V20.8L10.07 16.23L13.12 22.5L16.22 21L13.17 14.73L18.79 14.73L5.5 3.21Z"
-                          fill="#121212"
-                          stroke="white"
-                          strokeWidth="1.2"
-                          strokeLinejoin="round"
-                        />
-                        {/* High-Brightness Core */}
-                        <path
-                          d="M7.5 5.5V17L10.5 14L14 21L15 20.5L11.5 13.5L16.5 13.5L7.5 5.5Z"
-                          fill="white"
-                          opacity="0.3"
-                        />
-                      </svg>
-                    </div>
-                  </div>
+                {/* Top-right Arrow Button */}
+                <div className="absolute top-5 right-5 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/80 transition-all duration-500 group-hover/img:scale-110 group-hover/img:bg-white group-hover/img:text-black shadow-lg">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-5 h-5 transition-transform duration-500 group-hover/img:translate-x-0.5 group-hover/img:-translate-y-0.5"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
                 </div>
 
                 <img
