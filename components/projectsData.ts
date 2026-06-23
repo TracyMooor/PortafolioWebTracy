@@ -37,7 +37,7 @@ export const projects = [
         glowColor: 'rgba(168, 85, 247, 0.6)',
     },
     {
-        title: 'LOS SABORES DE OAXACA',
+        title: 'Los Sabores de Oaxaca',
         category: 'web_ecommerce',
         year: '2026',
         img: '/lossabores.png',
@@ -46,7 +46,7 @@ export const projects = [
         glowColor: 'rgba(16, 185, 129, 0.6)',
     },
     {
-        title: 'KAIRO',
+        title: 'Kairo',
         category: 'catalogo_digital',
         year: '2026',
         img: '/kairo.png',
@@ -55,7 +55,7 @@ export const projects = [
         glowColor: 'rgba(245, 158, 11, 0.6)',
     },
     {
-        title: 'VIVANTA FARMA',
+        title: 'Vivanta Farma',
         category: 'web_corporativa',
         year: '2026',
         img: '/vivantafarma.png',
