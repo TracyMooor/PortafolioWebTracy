@@ -2,7 +2,7 @@
 export const projects = [
     {
         title: 'Data Corp',
-        category: 'Visit Web',
+        category: 'web_corporativa',
         year: '2025',
         img: '/datacorp.jpeg',
         link: 'https://data-corp.vercel.app/',
@@ -11,7 +11,7 @@ export const projects = [
     },
     {
         title: 'Doctor Viajero',
-        category: 'Visit Web',
+        category: 'landing_page',
         year: '2026',
         img: '/doctorviajero.jpeg',
         link: 'https://www.doctorviajero.com/',
@@ -20,7 +20,7 @@ export const projects = [
     },
     {
         title: 'Elegidas por Amor',
-        category: 'Visit Web',
+        category: 'web_ecommerce',
         year: '2026',
         img: '/elegidas.jpeg',
         link: 'https://elegidas-por-amor.vercel.app/',
@@ -29,7 +29,7 @@ export const projects = [
     },
     {
         title: 'La Casa de Aurora',
-        category: 'Visit Web',
+        category: 'catalogo_digital',
         year: '2026',
         img: '/lacasa.jpg',
         link: 'https://lacasadeaurora.vercel.app/',
@@ -38,7 +38,7 @@ export const projects = [
     },
     {
         title: 'LOS SABORES DE OAXACA',
-        category: 'Visit Web',
+        category: 'web_ecommerce',
         year: '2026',
         img: '/lossabores.jpeg',
         link: 'https://lossaboresdeoaxaca.vercel.app/',
@@ -47,7 +47,7 @@ export const projects = [
     },
     {
         title: 'KAIRO',
-        category: 'Visit Web',
+        category: 'catalogo_digital',
         year: '2026',
         img: '/kairo.jpeg',
         link: 'https://kairo-pi-lime.vercel.app/',
@@ -56,7 +56,7 @@ export const projects = [
     },
     {
         title: 'VIVANTA FARMA',
-        category: 'Visit Web',
+        category: 'web_corporativa',
         year: '2026',
         img: '/vivantafarma.jpeg',
         link: 'https://vivantafarma.vercel.app/',

@@ -505,13 +505,13 @@ const Projects: React.FC = () => {
                         </svg>
                       </div>
                       <span className="relative pb-1">
-                        {project.category === 'Visit Web' ? t('visitWeb') : project.category}
+                        {project.category === 'Visit Web' ? t('visitWeb') : t(project.category)}
                         <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-white scale-x-0 group-hover/link:scale-x-100 transition-transform duration-500 origin-left" />
                       </span>
                     </a>
                   ) : (
                     <span className="uppercase">
-                      {project.category === 'Visit Web' ? t('visitWeb') : project.category}
+                      {project.category === 'Visit Web' ? t('visitWeb') : t(project.category)}
                     </span>
                   )}
                 </h4>

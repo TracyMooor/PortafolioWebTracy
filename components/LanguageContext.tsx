@@ -56,6 +56,11 @@ const translations = {
     category_label: "WEBSITE",
     year_label: "YEAR",
     visitWeb: "Visit Web",
+    web_corporativa: "Corporate Web",
+    web_ecommerce: "E-commerce Web",
+    landing_page: "Landing Page",
+    catalogo_digital: "Digital Catalog",
+    all_projects: "All",
 
     // Footer / Contact
     collaboration: "Collaboration",
@@ -113,6 +118,11 @@ const translations = {
     category_label: "SITIO WEB",
     year_label: "AÑO",
     visitWeb: "Visitar Web",
+    web_corporativa: "Web Corporativa",
+    web_ecommerce: "Web E-commerce",
+    landing_page: "Landing Page",
+    catalogo_digital: "Catálogo Digital",
+    all_projects: "Todos",
 
     // Footer / Contact
     collaboration: "Colaboración",

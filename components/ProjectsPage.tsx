@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { useLang } from './LanguageContext';
@@ -8,20 +8,13 @@ import { projects } from './projectsData';
 const ProjectsPage: React.FC = () => {
     const { t } = useLang();
     const containerRef = useRef<HTMLDivElement>(null);
+    const [activeFilter, setActiveFilter] = useState('all_projects');
+    const isFirstRender = useRef(true);
 
     useEffect(() => {
         window.scrollTo(0, 0);
 
         const ctx = gsap.context(() => {
-            gsap.from('.project-card', {
-                y: 60,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.1,
-                ease: 'power4.out',
-                delay: 0.5
-            });
-
             gsap.from('.page-title', {
                 y: 40,
                 opacity: 0,
@@ -32,6 +25,31 @@ const ProjectsPage: React.FC = () => {
 
         return () => ctx.revert();
     }, []);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            if (isFirstRender.current) {
+                // Initial fade in for cards
+                gsap.fromTo('.project-card',
+                    { y: 50, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: 'power4.out', delay: 0.4 }
+                );
+                isFirstRender.current = false;
+            } else {
+                // Fade in cards on filter change
+                gsap.fromTo('.project-card',
+                    { y: 30, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.6, stagger: 0.05, ease: 'power3.out' }
+                );
+            }
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, [activeFilter]);
+
+    const filteredProjects = activeFilter === 'all_projects'
+        ? projects
+        : projects.filter(project => project.category === activeFilter);
 
     return (
         <div ref={containerRef} className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black">
@@ -53,9 +71,27 @@ const ProjectsPage: React.FC = () => {
                     </p>
                 </header>
 
+                {/* Premium Categories Filter Bar */}
+                <div className="flex flex-wrap items-center gap-x-8 gap-y-4 border-b border-white/10 pb-8 mb-16">
+                    {['all_projects', 'web_corporativa', 'web_ecommerce', 'landing_page', 'catalogo_digital'].map((filter) => (
+                        <button
+                            key={filter}
+                            onClick={() => setActiveFilter(filter)}
+                            className={`mono text-[10px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-300 relative py-2 ${
+                                activeFilter === filter ? 'text-white' : 'text-white/40 hover:text-white/80'
+                            }`}
+                        >
+                            {t(filter)}
+                            {activeFilter === filter && (
+                                <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white rounded-full" />
+                            )}
+                        </button>
+                    ))}
+                </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                    {projects.map((project, index) => (
-                        <div key={index} className="project-card group">
+                    {filteredProjects.map((project) => (
+                        <div key={project.title} className="project-card group">
                             <a
                                 href={project.link}
                                 target="_blank"
@@ -81,7 +117,7 @@ const ProjectsPage: React.FC = () => {
                                     <div className="flex items-center gap-3 mb-2">
                                         <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: project.accentColor }}></span>
                                         <span className="mono text-[10px] uppercase text-white/40 tracking-[0.3em]">
-                                            {project.category === 'Visit Web' ? t('visitWeb') : project.category}
+                                            {project.category === 'Visit Web' ? t('visitWeb') : t(project.category)}
                                         </span>
                                     </div>
                                     <h3 className="heading text-2xl md:text-3xl font-bold uppercase tracking-tight">
